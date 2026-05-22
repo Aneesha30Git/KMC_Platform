@@ -1,0 +1,1945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KMC Events – Kandy Municipal Council</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Jost:wght@300;400;500;600&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --burgundy: #5c1a1a;
+            --burgundy2: #7a2323;
+            --saffron: #e8871a;
+            --saffron-light: #f5a94e;
+            --saffron-pale: rgba(232,135,26,0.1);
+            --gold: #c9a84c;
+            --gold-light: #e2c47a;
+            --ivory: #fdf6e8;
+            --ivory2: #f5ead0;
+            --ivory3: #ecdbb8;
+            --dark: #1a0a00;
+            --dark2: #2a1200;
+            --text: #2d1800;
+            --muted: #7a5c3a;
+            --white: #fff;
+            --red: #b5312a;
+            --green: #2e7d4f;
+            --radius: 4px;
+            --radius-lg: 12px;
+            --shadow: 0 2px 24px rgba(26,10,0,0.10);
+            --shadow-lg: 0 8px 48px rgba(26,10,0,0.18);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--ivory);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--ivory2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--saffron);
+            border-radius: 3px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z' fill='none' stroke='%23c9a84c' stroke-width='0.2' stroke-opacity='0.15'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            background: var(--dark);
+            padding: 0 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--saffron);
+            box-shadow: 0 4px 32px rgba(26,10,0,0.35);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .nav-logo {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--saffron), var(--gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 0 0 3px rgba(232,135,26,0.2);
+        }
+
+        .nav-brand-text {
+            line-height: 1;
+        }
+
+            .nav-brand-text .kmc {
+                font-family: 'Cinzel', serif;
+                color: var(--saffron);
+                font-size: 1.1rem;
+                font-weight: 700;
+                letter-spacing: 3px;
+            }
+
+            .nav-brand-text .sub {
+                font-size: 0.65rem;
+                color: rgba(255,255,255,0.4);
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                margin-top: 2px;
+            }
+
+        .nav-links {
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.65);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.45rem 1.1rem;
+            border-radius: 3px;
+            transition: all 0.2s;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+            .nav-btn:hover, .nav-btn.active {
+                color: var(--saffron-light);
+                background: rgba(232,135,26,0.1);
+            }
+
+            .nav-btn.primary {
+                background: var(--saffron);
+                color: var(--dark);
+                font-weight: 700;
+                border-radius: 3px;
+            }
+
+                .nav-btn.primary:hover {
+                    background: var(--saffron-light);
+                    transform: translateY(-1px);
+                }
+
+        #userInfo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.83rem;
+        }
+
+            #userInfo strong {
+                color: var(--saffron-light);
+            }
+
+        .user-avatar {
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, var(--burgundy), var(--saffron));
+            border-radius: 50%;
+            border: 2px solid var(--saffron);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.82rem;
+            color: var(--white);
+        }
+
+        /* ─── PAGES ─── */
+        .page {
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+
+            .page.active {
+                display: block;
+            }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(26,10,0,0.55) 0%, rgba(26,10,0,0.35) 40%, rgba(26,10,0,0.92) 100%), url('https://images.unsplash.com/photo-1626091022888-485eb96c494a?q=80&w=1074&auto=format&fit=crop') center/cover no-repeat;
+        }
+
+            .hero-bg::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(ellipse at 50% 60%, rgba(232,135,26,0.12) 0%, transparent 65%);
+            }
+
+        .hero-arch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(700px, 90vw);
+            height: 100%;
+            border-left: 1px solid rgba(232,135,26,0.18);
+            border-right: 1px solid rgba(232,135,26,0.18);
+            pointer-events: none;
+        }
+
+            .hero-arch::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -1px;
+                right: -1px;
+                height: 3px;
+                background: linear-gradient(90deg, transparent, var(--saffron), transparent);
+            }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.75rem;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .hero-eyebrow-line {
+            width: 40px;
+            height: 1px;
+            background: var(--saffron);
+            opacity: 0.7;
+        }
+
+        .hero-eyebrow-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: var(--saffron-light);
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.2rem, 7vw, 6rem);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.05;
+            margin-bottom: 1.25rem;
+            animation: fadeUp 0.9s 0.1s ease both;
+        }
+
+            .hero h1 .accent {
+                color: var(--saffron-light);
+                font-style: italic;
+            }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 480px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+            animation: fadeUp 1s 0.2s ease both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeUp 1.1s 0.3s ease both;
+        }
+
+        .hero-ornament {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(700px, 90vw);
+            display: flex;
+            align-items: center;
+            gap: 0;
+            z-index: 2;
+        }
+
+        .hero-ornament-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(232,135,26,0.5));
+        }
+
+            .hero-ornament-line.rev {
+                background: linear-gradient(90deg, rgba(232,135,26,0.5), transparent);
+            }
+
+        .hero-ornament-diamond {
+            width: 8px;
+            height: 8px;
+            background: var(--saffron);
+            transform: rotate(45deg);
+            margin: 0 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .hero-stats {
+            position: center;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4rem;
+            z-index: 2;
+            animation: fadeUp 1.2s 0.4s ease both;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--saffron-light);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.67rem;
+            color: rgba(255,255,255,0.45);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ─── BUTTONS ─── */
+        .btn {
+            padding: 0.85rem 2.4rem;
+            border-radius: 3px;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.83rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            transition: all 0.25s;
+        }
+
+        .btn-saffron {
+            background: var(--saffron);
+            color: var(--dark);
+            box-shadow: 0 4px 24px rgba(232,135,26,0.3);
+        }
+
+            .btn-saffron:hover {
+                background: var(--saffron-light);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 32px rgba(232,135,26,0.4);
+            }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.35);
+        }
+
+            .btn-ghost:hover {
+                background: rgba(255,255,255,0.08);
+                border-color: var(--saffron);
+                color: var(--saffron-light);
+            }
+
+        .btn-outline-dark {
+            background: transparent;
+            border: 1.5px solid var(--saffron);
+            color: var(--saffron);
+        }
+
+            .btn-outline-dark:hover {
+                background: var(--saffron-pale);
+            }
+
+        .btn-dark {
+            background: var(--dark);
+            color: var(--white);
+        }
+
+            .btn-dark:hover {
+                background: var(--dark2);
+            }
+
+        .btn-red {
+            background: var(--red);
+            color: white;
+        }
+
+        .btn-green {
+            background: var(--green);
+            color: white;
+        }
+
+            .btn-green:hover {
+                filter: brightness(1.1);
+            }
+
+        .btn-sm {
+            font-size: 0.72rem;
+            padding: 0.4rem 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* ─── SECTIONS ─── */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-eyebrow-line {
+            width: 32px;
+            height: 1px;
+            background: var(--saffron);
+        }
+
+        .section-eyebrow-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.68rem;
+            letter-spacing: 4px;
+            color: var(--saffron);
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            font-weight: 900;
+            color: var(--dark);
+            line-height: 1.15;
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            font-weight: 300;
+        }
+
+        /* ─── EVENT CARDS ─── */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid var(--ivory3);
+        }
+
+            .event-card:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-lg);
+            }
+
+        .event-card-image {
+            height: 210px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .event-card-image::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(26,10,0,0.75) 0%, transparent 55%);
+            }
+
+        .event-card-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            z-index: 1;
+        }
+
+        .event-type-badge {
+            display: inline-block;
+            background: var(--saffron);
+            color: var(--dark);
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.22rem 0.8rem;
+            border-radius: 2px;
+        }
+
+        .event-card-body {
+            padding: 1.4rem 1.4rem 0.9rem;
+        }
+
+        .event-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.7rem;
+            line-height: 1.3;
+        }
+
+        .event-meta {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .event-desc {
+            font-size: 0.85rem;
+            color: var(--text);
+            margin: 0.75rem 0 0;
+            line-height: 1.65;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-weight: 300;
+        }
+
+        .event-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.9rem 1.4rem;
+            background: var(--ivory);
+            border-top: 1px solid var(--ivory2);
+            margin-top: 1rem;
+        }
+
+        .capacity-bar {
+            flex: 1;
+            margin-right: 1rem;
+        }
+
+        .capacity-label {
+            font-size: 0.7rem;
+            color: var(--muted);
+            margin-bottom: 0.35rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .capacity-track {
+            height: 3px;
+            background: var(--ivory3);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .capacity-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--saffron), var(--gold-light));
+            border-radius: 2px;
+            transition: width 0.6s;
+        }
+
+        /* ─── SEARCH ─── */
+        .search-section {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--ivory3);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .search-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, var(--burgundy), var(--saffron), var(--gold));
+            }
+
+            .search-section h3 {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.15rem;
+                margin-bottom: 1.4rem;
+                color: var(--dark);
+            }
+
+        .search-fields {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+
+            .search-fields label {
+                font-size: 0.7rem;
+                font-weight: 600;
+                color: var(--muted);
+                display: block;
+                margin-bottom: 0.35rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .search-fields input, .search-fields select {
+                border: 1px solid var(--ivory3);
+                border-radius: var(--radius);
+                padding: 0.65rem 1rem;
+                font-family: 'Jost', sans-serif;
+                font-size: 0.87rem;
+                background: var(--ivory);
+                color: var(--text);
+                outline: none;
+                transition: border 0.2s;
+                width: 100%;
+            }
+
+                .search-fields input:focus, .search-fields select:focus {
+                    border-color: var(--saffron);
+                    box-shadow: 0 0 0 3px rgba(232,135,26,0.1);
+                }
+
+        .search-field {
+            flex: 1;
+            min-width: 150px;
+        }
+
+
+        .search-btns {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-end;
+        }
+
+        /* ─── CATEGORY PILLS ─── */
+        .category-filters {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .cat-btn {
+            padding: 0.45rem 1.2rem;
+            border-radius: 2px;
+            border: 1px solid var(--ivory3);
+            background: var(--white);
+            color: var(--muted);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.5px;
+        }
+
+            .cat-btn:hover, .cat-btn.active {
+                background: var(--saffron);
+                border-color: var(--saffron);
+                color: var(--dark);
+                font-weight: 700;
+            }
+
+        /* ─── MODALS ─── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(26,10,0,0.8);
+            backdrop-filter: blur(6px);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .modal-overlay.open {
+                display: flex;
+            }
+
+        .modal {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 440px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 32px 100px rgba(0,0,0,0.45);
+            animation: modalIn 0.3s ease;
+            position: relative;
+            border-top: 3px solid var(--saffron);
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-header {
+            margin-bottom: 1.75rem;
+        }
+
+            .modal-header h2 {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.9rem;
+                color: var(--dark);
+                margin-bottom: 0.2rem;
+            }
+
+            .modal-header p {
+                font-size: 0.85rem;
+                color: var(--muted);
+            }
+
+        .form-group {
+            margin-bottom: 1.15rem;
+        }
+
+            .form-group label {
+                display: block;
+                font-size: 0.7rem;
+                font-weight: 600;
+                color: var(--muted);
+                margin-bottom: 0.4rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .form-group input, .form-group select, .form-group textarea {
+                width: 100%;
+                border: 1px solid var(--ivory3);
+                border-radius: var(--radius);
+                padding: 0.75rem 1rem;
+                font-family: 'Jost', sans-serif;
+                font-size: 0.9rem;
+                background: var(--ivory);
+                color: var(--text);
+                outline: none;
+                transition: border 0.2s;
+            }
+
+                .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+                    border-color: var(--saffron);
+                    box-shadow: 0 0 0 3px rgba(232,135,26,0.1);
+                }
+
+            .form-group textarea {
+                resize: vertical;
+                min-height: 90px;
+            }
+
+        .form-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.75rem;
+        }
+
+        .form-toggle {
+            text-align: center;
+            margin-top: 1.1rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+            .form-toggle a {
+                color: var(--saffron);
+                cursor: pointer;
+                font-weight: 600;
+            }
+
+        /* ─── DASHBOARD ─── */
+        .page-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--ivory3);
+            position: relative;
+        }
+
+            .dash-header::after {
+                content: '';
+                position: absolute;
+                bottom: -1px;
+                left: 0;
+                width: 60px;
+                height: 2px;
+                background: var(--saffron);
+            }
+
+            .dash-header h2 {
+                font-family: 'Playfair Display', serif;
+                font-size: 2.2rem;
+                color: var(--dark);
+            }
+
+            .dash-header p {
+                color: var(--muted);
+                font-size: 0.85rem;
+                margin-top: 0.3rem;
+            }
+
+        .table-wrapper {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid var(--ivory3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: var(--dark);
+            color: var(--saffron-light);
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--ivory2);
+            font-size: 0.85rem;
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: var(--ivory);
+        }
+
+        .td-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* ─── MY REGISTRATIONS ─── */
+        .reg-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.4rem 1.75rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--saffron);
+            transition: transform 0.2s;
+            border-top: 1px solid var(--ivory2);
+            border-right: 1px solid var(--ivory2);
+            border-bottom: 1px solid var(--ivory2);
+        }
+
+            .reg-card:hover {
+                transform: translateX(5px);
+            }
+
+            .reg-card .reg-title {
+                font-family: 'Playfair Display', serif;
+                font-weight: 700;
+                font-size: 1rem;
+                color: var(--dark);
+            }
+
+            .reg-card .reg-date {
+                font-size: 0.78rem;
+                color: var(--muted);
+                margin-top: 0.35rem;
+            }
+
+        /* ─── TOAST ─── */
+        #toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--dark);
+            color: var(--white);
+            padding: 1rem 1.6rem;
+            border-radius: var(--radius);
+            font-size: 0.86rem;
+            z-index: 999;
+            display: none;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+            border-left: 3px solid var(--saffron);
+            max-width: 320px;
+            line-height: 1.5;
+            animation: slideInToast 0.3s ease;
+        }
+
+        @keyframes slideInToast {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ─── DEMO BOX ─── */
+        .demo-box {
+            background: var(--dark);
+            color: rgba(255,255,255,0.75);
+            border-radius: var(--radius);
+            padding: 1.25rem 1.75rem;
+            margin-bottom: 3.5rem;
+            font-size: 0.83rem;
+            line-height: 2;
+            border: 1px solid rgba(232,135,26,0.25);
+            border-left: 3px solid var(--saffron);
+        }
+
+            .demo-box strong {
+                color: var(--saffron-light);
+            }
+
+        /* ─── EMPTY STATE ─── */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--muted);
+        }
+
+        .empty-state-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.4;
+        }
+
+        /* ─── PAGE HERO ─── */
+        .page-hero {
+            background: var(--dark);
+            padding: 4rem 2rem 3.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .page-hero::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(ellipse at 50% 100%, rgba(232,135,26,0.12) 0%, transparent 60%);
+            }
+
+            .page-hero::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, var(--saffron), transparent);
+            }
+
+            .page-hero h1 {
+                font-family: 'Playfair Display', serif;
+                font-size: 2.8rem;
+                color: var(--gold-light);
+                position: relative;
+                font-weight: 900;
+            }
+
+            .page-hero p {
+                color: rgba(255,255,255,0.45);
+                margin-top: 0.6rem;
+                position: relative;
+                font-size: 0.88rem;
+                letter-spacing: 0.5px;
+            }
+
+        /* ─── CATEGORY SECTION ─── */
+        .cat-section {
+            background: var(--dark);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cat-section::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='38' fill='none' stroke='%23c9a84c' stroke-width='0.3' stroke-opacity='0.1'/%3E%3C/svg%3E");
+            }
+
+        .cat-grid {
+            position: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+        }
+
+        .cat-card {
+            position: center;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(232,135,26,0.15);
+            border-radius: var(--radius);
+            padding: 2rem 1.25rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s;
+            color: rgba(255,255,255,0.65);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+            .cat-card:hover {
+                background: rgba(232,135,26,0.12);
+                border-color: var(--saffron);
+                color: var(--saffron-light);
+                transform: translateY(-4px);
+            }
+
+        .cat-card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        /* ─── FOOTER ─── */
+        .site-footer {
+            background: var(--dark);
+            border-top: 2px solid var(--saffron);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+            .site-footer::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z' fill='none' stroke='%23c9a84c' stroke-width='0.2' stroke-opacity='0.07'/%3E%3C/svg%3E");
+                pointer-events: none;
+            }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+            position: relative;
+        }
+
+        .footer-top-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--saffron), var(--gold), var(--saffron), transparent);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(232,135,26,0.15);
+        }
+
+        .footer-col-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            color: var(--saffron);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.4rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(232,135,26,0.2);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .footer-link {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.45);
+            cursor: pointer;
+            transition: color 0.2s;
+            letter-spacing: 0.3px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-family: 'Jost', sans-serif;
+            padding: 0;
+        }
+
+            .footer-link:hover {
+                color: var(--saffron-light);
+            }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .footer-contact-icon {
+            color: var(--saffron);
+            font-size: 0.8rem;
+            margin-top: 1px;
+            flex-shrink: 0;
+        }
+
+        .footer-contact-text {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.42);
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-top: 1.75rem;
+        }
+
+        .footer-copy {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 0.3px;
+        }
+
+        .footer-diamonds {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .footer-diamond {
+            width: 4px;
+            height: 4px;
+            transform: rotate(45deg);
+            opacity: 0.5;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-brand">
+            <div class="nav-logo">🏛</div>
+            <div class="nav-brand-text">
+                <div class="kmc">KMC Events</div>
+                <div class="sub">Kandy Municipal Council</div>
+            </div>
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn active" onclick="showPage('home')">Home</button>
+            <button class="nav-btn" onclick="showPage('events')">Events</button>
+            <div id="guestNav" style="display:flex;gap:0.25rem;">
+                <button class="nav-btn" onclick="openModal('loginModal')">Login</button>
+                <button class="nav-btn primary" onclick="openModal('registerModal')">Register</button>
+            </div>
+            <div id="userNav" style="display:none;align-items:center;gap:0.5rem;">
+                <div id="userInfo"></div>
+                <button class="nav-btn" onclick="showPage('dashboard')" id="dashBtn" style="display:none">Dashboard</button>
+                <button class="nav-btn" onclick="showPage('myregs')" id="myRegsBtn" style="display:none">My Events</button>
+                <button class="nav-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══════════════════ HOME PAGE ══════════════════ -->
+    <div id="page-home" class="page active">
+
+        <div class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-arch"></div>
+            <div class="hero-content">
+                <div class="hero-eyebrow">
+                    <div class="hero-eyebrow-line"></div>
+                    <div class="hero-eyebrow-text">Official City Events Platform</div>
+                    <div class="hero-eyebrow-line"></div>
+                </div>
+                <h1>Discover <span class="accent">Kandy's</span><br>Living Heritage</h1>
+                <p class="hero-desc">Your official gateway to cultural festivals, sports, music, and community events curated by the Kandy Municipal Council.</p>
+                <div class="hero-cta">
+                    <button class="btn btn-saffron" onclick="showPage('events')">Explore All Events</button>
+                    <button class="btn btn-ghost" onclick="openModal('registerModal')">Join as Organizer</button>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat"><div class="hero-stat-num">4+</div><div class="hero-stat-label">Events</div></div>
+                <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">Categories</div></div>
+                <div class="hero-stat"><div class="hero-stat-num">1150+</div><div class="hero-stat-label">Total Seats</div></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="demo-box">
+                🔑 <strong>Demo Accounts</strong> — all passwords: <strong>password123</strong> &nbsp;·&nbsp;
+                Organizer 1: <strong>perera@events.lk</strong> &nbsp;·&nbsp;
+                Organizer 2: <strong>admin@kmc.lk</strong> &nbsp;·&nbsp;
+                Public User: <strong>nimal@gmail.com</strong>
+            </div>
+            <div class="section-header">
+                <div class="section-eyebrow">
+                    <div class="section-eyebrow-line"></div>
+                    <div class="section-eyebrow-text">Upcoming</div>
+                    <div class="section-eyebrow-line"></div>
+                </div>
+                <h2 class="section-title">Featured Events</h2>
+                <p class="section-subtitle">Handpicked highlights from across the city</p>
+            </div>
+            <div id="homeEvents" class="events-grid"></div>
+            <div style="text-align:center;margin-top:3rem;">
+                <button class="btn btn-outline-dark" onclick="showPage('events')">View All Events →</button>
+            </div>
+        </div>
+
+        <div class="cat-section">
+            <div style="max-width:1200px;margin:0 auto;text-align:center;position:relative;">
+                <div class="section-eyebrow" style="justify-content:center;">
+                    <div class="section-eyebrow-line"></div>
+                    <div class="section-eyebrow-text">Browse</div>
+                    <div class="section-eyebrow-line"></div>
+                </div>
+                <h2 class="section-title" style="color:var(--gold-light);">By Category</h2>
+                <p style="color:rgba(255,255,255,0.4);font-size:0.88rem;margin-top:0.5rem;">Find events that speak to your interests</p>
+                <center><div class="cat-grid" id="catGrid"></div></center>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ══════════════════ EVENTS PAGE ══════════════════ -->
+    <div id="page-events" class="page">
+        <div class="page-hero">
+            <h1>All Events</h1>
+            <p>Browse and register for events happening across Kandy</p>
+        </div>
+        <div class="section">
+            <div class="search-section">
+                <h3>🔍 Search & Filter</h3>
+                <div class="search-fields">
+                    <div class="search-field"><label>Keyword</label><input type="text" id="searchKeyword" placeholder="Event name, location..." /></div>
+                    <div class="search-field">
+                        <label>Type</label>
+                        <select id="searchType">
+                            <option value="">All Types</option>
+                            <option>Cultural</option>
+                            <option>Sports</option>
+                            <option>Music</option>
+                            <option>Food</option>
+                            <option>Community</option>
+                        </select>
+                    </div>
+                    <div class="search-field"><label>From Date</label><input type="date" id="searchFrom" /></div>
+                    <div class="search-field"><label>To Date</label><input type="date" id="searchTo" /></div>
+                    <div class="search-btns">
+                        <button class="btn btn-saffron" onclick="searchEvents()">Search</button>
+                        <button class="btn btn-outline-dark btn-sm" onclick="clearSearch()">Clear</button>
+                    </div>
+                </div>
+            </div>
+            <div class="category-filters">
+                <button class="cat-btn active" onclick="selectCat(this,'')">All</button>
+                <button class="cat-btn" onclick="selectCat(this,'Cultural')">🎭 Cultural</button>
+                <button class="cat-btn" onclick="selectCat(this,'Sports')">⚽ Sports</button>
+                <button class="cat-btn" onclick="selectCat(this,'Music')">🎵 Music</button>
+                <button class="cat-btn" onclick="selectCat(this,'Food')">🍛 Food</button>
+                <button class="cat-btn" onclick="selectCat(this,'Community')">🤝 Community</button>
+            </div>
+            <div id="eventsGrid" class="events-grid"></div>
+        </div>
+    </div>
+
+    <!-- ══════════════════ DASHBOARD ══════════════════ -->
+    <div id="page-dashboard" class="page">
+        <div class="page-hero"><h1>Organizer Dashboard</h1><p>Create, manage and track your events</p></div>
+        <div class="page-inner">
+            <div class="dash-header">
+                <div><h2>My Events</h2><p>All events you have created</p></div>
+                <button class="btn btn-saffron" onclick="openEventForm()">+ New Event</button>
+            </div>
+            <div id="dashTable"></div>
+        </div>
+    </div>
+
+    <!-- ══════════════════ MY REGISTRATIONS ══════════════════ -->
+    <div id="page-myregs" class="page">
+        <div class="page-hero"><h1>My Registered Events</h1><p>Events you have signed up for</p></div>
+        <div class="page-inner"><div id="myRegsList"></div></div>
+    </div>
+
+    <!-- ══════════════════ MODALS ══════════════════ -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <div class="modal-header"><h2>Welcome Back</h2><p>Sign in to your KMC Events account</p></div>
+            <div class="form-group"><label>Email Address</label><input type="email" id="loginEmail" placeholder="you@email.com" /></div>
+            <div class="form-group"><label>Password</label><input type="password" id="loginPassword" placeholder="••••••••" /></div>
+            <div class="form-actions">
+                <button class="btn btn-saffron" style="flex:1" onclick="login()">Sign In</button>
+                <button class="btn btn-outline-dark" onclick="closeModal('loginModal')">Cancel</button>
+            </div>
+            <div class="form-toggle">No account? <a onclick="switchModal('loginModal','registerModal')">Register here</a></div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal">
+            <div class="modal-header"><h2>Create Account</h2><p>Join the KMC Events community</p></div>
+            <div class="form-group"><label>Full Name</label><input type="text" id="regName" placeholder="Your full name" /></div>
+            <div class="form-group"><label>Email Address</label><input type="email" id="regEmail" placeholder="you@email.com" /></div>
+            <div class="form-group"><label>Password</label><input type="password" id="regPassword" placeholder="••••••••" /></div>
+            <div class="form-group">
+                <label>I want to...</label>
+                <select id="regRole">
+                    <option value="Public">Attend events as a Public User</option>
+                    <option value="Organizer">Create & manage events as Organizer</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-saffron" style="flex:1" onclick="register()">Create Account</button>
+                <button class="btn btn-outline-dark" onclick="closeModal('registerModal')">Cancel</button>
+            </div>
+            <div class="form-toggle">Have an account? <a onclick="switchModal('registerModal','loginModal')">Login here</a></div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="eventFormModal">
+        <div class="modal" style="max-width:520px;">
+            <div class="modal-header"><h2 id="eventFormTitle">New Event</h2><p>Fill in the event details below</p></div>
+            <input type="hidden" id="editEventId" />
+            <div class="form-group"><label>Event Title</label><input type="text" id="efTitle" placeholder="Name your event" /></div>
+            <div class="form-group"><label>Description</label><textarea id="efDesc" placeholder="Describe the event..."></textarea></div>
+            <div class="form-group"><label>Location / Venue</label><input type="text" id="efLocation" placeholder="Where is it happening?" /></div>
+            <div class="form-group"><label>Date & Time</label><input type="datetime-local" id="efDate" /></div>
+            <div class="form-group">
+                <label>Event Type</label>
+                <select id="efType"><option>Cultural</option><option>Sports</option><option>Music</option><option>Food</option><option>Community</option></select>
+            </div>
+            <div class="form-group"><label>Capacity</label><input type="number" id="efCapacity" placeholder="Maximum attendees" min="1" /></div>
+            <div class="form-actions">
+                <button class="btn btn-saffron" style="flex:1" onclick="saveEvent()">Save Event</button>
+                <button class="btn btn-outline-dark" onclick="closeModal('eventFormModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <!-- ══════════════════ FOOTER ══════════════════ -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-top-line"></div>
+
+            <div class="footer-grid">
+
+                <!-- Brand -->
+                <div>
+                    <div style="display:flex;align-items:center;gap:0.9rem;margin-bottom:1.25rem;">
+                        <div style="width:42px;height:42px;background:linear-gradient(135deg,var(--saffron),var(--gold));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 0 0 3px rgba(232,135,26,0.2);flex-shrink:0;">🏛</div>
+                        <div>
+                            <div style="font-family:'Cinzel',serif;color:var(--saffron);font-size:1.05rem;font-weight:700;letter-spacing:3px;">KMC Events</div>
+                            <div style="font-size:0.58rem;color:rgba(255,255,255,0.35);letter-spacing:2.5px;text-transform:uppercase;margin-top:2px;">Kandy Municipal Council</div>
+                        </div>
+                    </div>
+                    <p style="font-size:0.83rem;color:rgba(255,255,255,0.42);line-height:1.85;font-weight:300;max-width:280px;">
+                        The official events platform of the Kandy Municipal Council — celebrating the city's rich cultural heritage through festivals, sports, music, and community gatherings.
+                    </p>
+                    <div style="display:flex;align-items:center;gap:0.6rem;margin-top:1.75rem;">
+                        <div style="width:24px;height:1px;background:rgba(232,135,26,0.4);"></div>
+                        <div style="width:5px;height:5px;background:var(--saffron);transform:rotate(45deg);"></div>
+                        <div style="width:24px;height:1px;background:rgba(232,135,26,0.4);"></div>
+                    </div>
+                    <p style="font-size:0.72rem;color:rgba(255,255,255,0.22);margin-top:1rem;letter-spacing:0.5px;">Serving Kandy since 1866</p>
+                </div>
+
+                <!-- Explore -->
+                <div>
+                    <div class="footer-col-title">Explore</div>
+                    <div class="footer-links">
+                        <button class="footer-link" onclick="showPage('home')">Home</button>
+                        <button class="footer-link" onclick="showPage('events')">All Events</button>
+                        <button class="footer-link" onclick="filterByCategory('Cultural')">Cultural Events</button>
+                        <button class="footer-link" onclick="filterByCategory('Music')">Music & Arts</button>
+                        <button class="footer-link" onclick="filterByCategory('Sports')">Sports</button>
+                        <button class="footer-link" onclick="filterByCategory('Food')">Food & Community</button>
+                    </div>
+                </div>
+
+                <!-- Account -->
+                <div>
+                    <div class="footer-col-title">Account</div>
+                    <div class="footer-links">
+                        <button class="footer-link" onclick="openModal('loginModal')">Login</button>
+                        <button class="footer-link" onclick="openModal('registerModal')">Create Account</button>
+                        <button class="footer-link" onclick="showPage('dashboard')">Organizer Dashboard</button>
+                        <button class="footer-link" onclick="showPage('myregs')">My Registrations</button>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <div class="footer-col-title">Contact</div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon">📍</span>
+                        <span class="footer-contact-text">Kandy Municipal Council,<br>Kandy, Sri Lanka</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon">📞</span>
+                        <span class="footer-contact-text">+94 81 222 2222</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon">✉️</span>
+                        <span class="footer-contact-text">events@kandy.lk</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <span class="footer-contact-icon">🕐</span>
+                        <span class="footer-contact-text">Mon–Fri, 8:30am–4:30pm</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom bar -->
+            <div class="footer-bottom">
+                <p class="footer-copy">© 2026 Kandy Municipal Council. All rights reserved.</p>
+                <div style="display:flex;align-items:center;gap:1.5rem;">
+                    <span style="font-size:0.68rem;color:rgba(255,255,255,0.18);letter-spacing:1px;text-transform:uppercase;">Official City Platform</span>
+                    <div class="footer-diamonds">
+                        <div class="footer-diamond" style="background:var(--saffron);"></div>
+                        <div class="footer-diamond" style="background:var(--gold);"></div>
+                        <div class="footer-diamond" style="background:var(--saffron);"></div>
+                    </div>
+                    <span style="font-size:0.68rem;color:rgba(255,255,255,0.18);letter-spacing:1px;text-transform:uppercase;">Kandy, Sri Lanka</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const API = 'https://localhost:7296/api';
+        let token = localStorage.getItem('kmc_token');
+        let currentUser = JSON.parse(localStorage.getItem('kmc_user') || 'null');
+
+        function getEventImage(type) {
+            const images = {
+                'Cultural': 'https://images.unsplash.com/photo-1519181245277-cffeb31da2e3?w=600&q=80',
+                'Sports': 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=80',
+                'Music': 'https://images.unsplash.com/photo-1501386761578-eaa54b384b46?w=600&q=80',
+                'Food': 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80',
+                'Community': 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80'
+            };
+            return images[type] || 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80';
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateNav(); loadHomeEvents(); loadEvents(); buildCatGrid();
+        });
+
+        function buildCatGrid() {
+            const cats = [['🎭', 'Cultural'], ['⚽', 'Sports'], ['🎵', 'Music'], ['🍛', 'Food'], ['🤝', 'Community']];
+            document.getElementById('catGrid').innerHTML = cats.map(([icon, cat]) =>
+                `<div class="cat-card" onclick="filterByCategory('${cat}')">
+                        <span class="cat-card-icon">${icon}</span>${cat}
+                    </div>`
+            ).join('');
+        }
+
+        function updateNav() {
+            const gN = document.getElementById('guestNav'), uN = document.getElementById('userNav');
+            const dB = document.getElementById('dashBtn'), mB = document.getElementById('myRegsBtn');
+            const uI = document.getElementById('userInfo');
+            if (currentUser) {
+                gN.style.display = 'none'; uN.style.display = 'flex';
+                const initials = currentUser.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+                uI.innerHTML = `<div class="user-avatar">${initials}</div><span>Hello, <strong>${currentUser.name.split(' ')[0]}</strong></span>`;
+                if (currentUser.role === 'Organizer') dB.style.display = 'inline-block';
+                else mB.style.display = 'inline-block';
+            } else { gN.style.display = 'flex'; uN.style.display = 'none'; }
+        }
+
+        function showPage(name) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('page-' + name).classList.add('active');
+            window.scrollTo(0, 0);
+            if (name === 'dashboard') loadDashboard();
+            if (name === 'myregs') loadMyRegistrations();
+            if (name === 'events') loadEvents();
+        }
+
+        function filterByCategory(cat) {
+            showPage('events');
+            document.getElementById('searchType').value = cat;
+            searchEvents();
+        }
+
+        function selectCat(btn, cat) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('searchType').value = cat;
+            searchEvents();
+        }
+
+        async function login() {
+            const res = await api('POST', '/auth/login', { email: document.getElementById('loginEmail').value, password: document.getElementById('loginPassword').value }, false);
+            if (res.token) {
+                token = res.token; currentUser = { name: res.name, role: res.role, userId: res.userId };
+                localStorage.setItem('kmc_token', token); localStorage.setItem('kmc_user', JSON.stringify(currentUser));
+                closeModal('loginModal'); updateNav(); toast('👋 Welcome back, ' + res.name + '!');
+                if (res.role === 'Organizer') showPage('dashboard'); else { loadHomeEvents(); loadEvents(); }
+            } else toast('❌ ' + (res.message || 'Invalid credentials.'), true);
+        }
+
+        async function register() {
+            const res = await api('POST', '/auth/register', { name: document.getElementById('regName').value, email: document.getElementById('regEmail').value, password: document.getElementById('regPassword').value, role: document.getElementById('regRole').value }, false);
+            if (res.token) {
+                token = res.token; currentUser = { name: res.name, role: res.role, userId: res.userId };
+                localStorage.setItem('kmc_token', token); localStorage.setItem('kmc_user', JSON.stringify(currentUser));
+                closeModal('registerModal'); updateNav(); toast('🎉 Welcome, ' + res.name + '!');
+            } else toast('❌ ' + (res.message || 'Registration failed.'), true);
+        }
+
+        function logout() {
+            token = null; currentUser = null;
+            localStorage.removeItem('kmc_token'); localStorage.removeItem('kmc_user');
+            updateNav(); showPage('home'); toast('👋 Logged out.');
+        }
+
+        async function loadHomeEvents() {
+            const events = await api('GET', '/events', null, false);
+            const c = document.getElementById('homeEvents');
+            if (!Array.isArray(events) || !events.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📅</div><p>No events yet.</p></div>'; return; }
+            c.innerHTML = events.slice(0, 3).map(renderEventCard).join('');
+        }
+
+        async function loadEvents() {
+            const events = await api('GET', '/events', null, false);
+            const c = document.getElementById('eventsGrid');
+            if (!Array.isArray(events) || !events.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📅</div><p>No events found.</p></div>'; return; }
+            c.innerHTML = events.map(renderEventCard).join('');
+        }
+
+        async function searchEvents() {
+            const keyword = document.getElementById('searchKeyword').value;
+            const type = document.getElementById('searchType').value;
+            const from = document.getElementById('searchFrom').value;
+            const to = document.getElementById('searchTo').value;
+            let qs = '?';
+            if (keyword) qs += `keyword=${encodeURIComponent(keyword)}&`;
+            if (type) qs += `type=${encodeURIComponent(type)}&`;
+            if (from) qs += `fromDate=${encodeURIComponent(from)}&`;
+            if (to) qs += `toDate=${encodeURIComponent(to)}&`;
+            const events = await api('GET', '/events/search' + qs, null, false);
+            const c = document.getElementById('eventsGrid');
+            if (!Array.isArray(events) || !events.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🔍</div><p>No events match your search.</p></div>'; return; }
+            c.innerHTML = events.map(renderEventCard).join('');
+        }
+
+        function clearSearch() {
+            ['searchKeyword', 'searchFrom', 'searchTo'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('searchType').value = '';
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector('.cat-btn').classList.add('active');
+            loadEvents();
+        }
+
+        function renderEventCard(e) {
+            const pct = e.capacity > 0 ? Math.min(100, Math.round((e.registeredCount / e.capacity) * 100)) : 0;
+            const full = e.registeredCount >= e.capacity;
+            const imgUrl = getEventImage(e.type);
+            const dateStr = new Date(e.eventDate).toLocaleDateString('en-LK', { day: 'numeric', month: 'short', year: 'numeric' });
+            return `
+                    <div class="event-card" onclick="viewEventDetail(${e.id})">
+                        <div class="event-card-image" style="background-image:url('${imgUrl}')">
+                            <div class="event-card-image-overlay"><div class="event-type-badge">${e.type}</div></div>
+                        </div>
+                        <div class="event-card-body">
+                            <div class="event-title">${e.title}</div>
+                            <div class="event-meta">📅 ${dateStr}</div>
+                            <div class="event-meta">📍 ${e.location}</div>
+                            <div class="event-meta">🎪 By ${e.organizerName}</div>
+                            <div class="event-desc">${e.description}</div>
+                        </div>
+                        <div class="event-footer">
+                            <div class="capacity-bar">
+                                <div class="capacity-label">${e.registeredCount} / ${e.capacity} spots</div>
+                                <div class="capacity-track"><div class="capacity-fill" style="width:${pct}%"></div></div>
+                            </div>
+                            ${!currentUser
+                    ? `<button class="btn btn-saffron btn-sm" onclick="event.stopPropagation();openModal('loginModal')">Login</button>`
+                    : currentUser.role === 'Public'
+                        ? `<button class="btn btn-saffron btn-sm" onclick="event.stopPropagation();registerForEvent(${e.id})" ${full ? 'disabled style="opacity:0.45;cursor:not-allowed"' : ''}>${full ? 'Full' : 'Register'}</button>`
+                        : ''}
+                        </div>
+                    </div>`;
+        }
+
+        async function registerForEvent(eventId) {
+            if (!currentUser) { openModal('loginModal'); return; }
+            const res = await api('POST', '/registrations', { eventId });
+            if (res.data) toast('✅ Registered successfully!');
+            else if (res.message === 'You are already registered for this event.') toast('⚠️ Already registered.', true);
+            else if (res.message === 'Event is fully booked.') toast('⚠️ Event is fully booked!', true);
+            else toast(res.message || 'Registration failed.', true);
+            loadEvents(); loadHomeEvents();
+        }
+
+        async function viewEventDetail(eventId) {
+            const e = await api('GET', '/events/' + eventId, null, false);
+            if (!e || !e.id) { toast('Could not load event.', true); return; }
+            const pct = e.capacity > 0 ? Math.min(100, Math.round((e.registeredCount / e.capacity) * 100)) : 0;
+            const full = e.registeredCount >= e.capacity;
+            const imgUrl = getEventImage(e.type);
+            const dateStr = new Date(e.eventDate).toLocaleDateString('en-LK', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+            const overlay = document.createElement('div');
+            overlay.style.cssText = 'position:fixed;inset:0;background:rgba(26,10,0,0.85);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;';
+            overlay.innerHTML = `
+                    <div style="background:var(--white);border-radius:6px;width:100%;max-width:580px;max-height:90vh;overflow-y:auto;box-shadow:0 32px 100px rgba(0,0,0,0.5);border-top:3px solid var(--saffron);">
+                        <div style="height:220px;background:linear-gradient(to bottom,rgba(26,10,0,0.25),rgba(26,10,0,0.85)),url('${imgUrl}') center/cover;position:relative;display:flex;align-items:flex-end;padding:1.5rem;">
+                            <div>
+                                <span style="background:var(--saffron);color:var(--dark);font-family:'Cinzel',serif;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:0.22rem 0.8rem;border-radius:2px;">${e.type}</span>
+                                <h2 style="font-family:'Playfair Display',serif;color:var(--white);font-size:1.85rem;margin-top:0.6rem;line-height:1.2;font-weight:900;">${e.title}</h2>
+                                <p style="color:rgba(255,255,255,0.6);font-size:0.82rem;margin-top:0.25rem;">By ${e.organizerName}</p>
+                            </div>
+                            <button onclick="this.closest('.detail-overlay').remove()" style="position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);color:white;width:34px;height:34px;border-radius:50%;font-size:1rem;cursor:pointer;">✕</button>
+                        </div>
+                        <div style="padding:1.75rem;">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+                                <div style="background:var(--ivory);border-radius:4px;padding:1rem;border:1px solid var(--ivory3);">
+                                    <div style="font-family:'Cinzel',serif;font-size:0.6rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:0.4rem;">📅 Date</div>
+                                    <div style="font-size:0.86rem;font-weight:600;color:var(--dark);">${dateStr}</div>
+                                </div>
+                                <div style="background:var(--ivory);border-radius:4px;padding:1rem;border:1px solid var(--ivory3);">
+                                    <div style="font-family:'Cinzel',serif;font-size:0.6rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:0.4rem;">📍 Location</div>
+                                    <div style="font-size:0.86rem;font-weight:600;color:var(--dark);">${e.location}</div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom:1.5rem;">
+                                <div style="font-family:'Cinzel',serif;font-size:0.6rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:0.6rem;">About this Event</div>
+                                <p style="font-size:0.9rem;line-height:1.8;color:var(--text);font-weight:300;">${e.description}</p>
+                            </div>
+                            <div style="background:var(--ivory);border-radius:4px;padding:1.25rem;margin-bottom:1.5rem;border:1px solid var(--ivory3);">
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+                                    <div style="font-size:0.8rem;font-weight:700;color:var(--dark);">Availability</div>
+                                    <div style="font-size:0.82rem;color:var(--muted);">${e.registeredCount} of ${e.capacity} registered</div>
+                                </div>
+                                <div style="height:5px;background:var(--ivory3);border-radius:2px;overflow:hidden;margin-bottom:0.5rem;">
+                                    <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,var(--saffron),var(--gold-light));border-radius:2px;"></div>
+                                </div>
+                                ${full
+                    ? `<div style="color:var(--red);font-size:0.8rem;font-weight:600;margin-top:0.5rem;">⚠️ This event is fully booked</div>`
+                    : `<div style="color:var(--green);font-size:0.8rem;font-weight:600;margin-top:0.5rem;">✅ ${e.capacity - e.registeredCount} spots remaining</div>`}
+                            </div>
+                            <div style="display:flex;gap:0.75rem;">
+                                ${!currentUser
+                    ? `<button class="btn btn-saffron" style="flex:1" onclick="this.closest('.detail-overlay').remove();openModal('loginModal')">Login to Register</button>`
+                    : currentUser.role === 'Public'
+                        ? `<button class="btn btn-saffron" style="flex:1" ${full ? 'disabled style="opacity:0.5"' : ''} onclick="this.closest('.detail-overlay').remove();registerForEvent(${e.id})">${full ? 'Event Full' : '🎟 Register Now'}</button>`
+                        : ''}
+                                <button class="btn btn-outline-dark" onclick="this.closest('.detail-overlay').remove()">Close</button>
+                            </div>
+                        </div>
+                    </div>`;
+            overlay.classList.add('detail-overlay');
+            overlay.addEventListener('click', ev => { if (ev.target === overlay) overlay.remove(); });
+            document.body.appendChild(overlay);
+        }
+
+        async function loadDashboard() {
+            const events = await api('GET', '/events/my-events');
+            const c = document.getElementById('dashTable');
+            if (!Array.isArray(events) || !events.length) { c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📋</div><p>No events yet. Click "+ New Event" to get started.</p></div>'; return; }
+            c.innerHTML = `<div class="table-wrapper"><table>
+                    <thead><tr><th>Title</th><th>Type</th><th>Date</th><th>Location</th><th>Capacity</th><th>Registered</th><th>Actions</th></tr></thead>
+                    <tbody>${events.map(e => `<tr>
+                        <td><strong>${e.title}</strong></td>
+                        <td><span class="event-type-badge">${e.type}</span></td>
+                        <td>${new Date(e.eventDate).toLocaleDateString()}</td>
+                        <td>${e.location}</td>
+                        <td>${e.capacity}</td>
+                        <td><span style="background:var(--saffron-pale);color:var(--saffron);font-weight:700;padding:0.2rem 0.7rem;border-radius:2px;font-size:0.8rem;">${e.registeredCount}</span></td>
+                        <td class="td-actions">
+                            <button class="btn btn-sm btn-dark" onclick="openEventForm(${e.id})">✏️ Edit</button>
+                            <button class="btn btn-sm btn-green" onclick="viewRegistrations(${e.id},'${e.title}')">👥 Regs</button>
+                            <button class="btn btn-sm btn-red" onclick="deleteEvent(${e.id})">🗑</button>
+                        </td>
+                    </tr>`).join('')}</tbody>
+                </table></div>`;
+        }
+
+        function openEventForm(id = null) {
+            document.getElementById('editEventId').value = id || '';
+            document.getElementById('eventFormTitle').textContent = id ? 'Edit Event' : 'New Event';
+            if (id) {
+                api('GET', '/events/' + id, null, false).then(e => {
+                    document.getElementById('efTitle').value = e.title;
+                    document.getElementById('efDesc').value = e.description;
+                    document.getElementById('efLocation').value = e.location;
+                    document.getElementById('efDate').value = e.eventDate.slice(0, 16);
+                    document.getElementById('efType').value = e.type;
+                    document.getElementById('efCapacity').value = e.capacity;
+                });
+            } else { ['efTitle', 'efDesc', 'efLocation', 'efDate', 'efCapacity'].forEach(id => document.getElementById(id).value = ''); }
+            openModal('eventFormModal');
+        }
+
+        async function saveEvent() {
+            const id = document.getElementById('editEventId').value;
+            const body = { title: document.getElementById('efTitle').value, description: document.getElementById('efDesc').value, location: document.getElementById('efLocation').value, eventDate: document.getElementById('efDate').value, type: document.getElementById('efType').value, capacity: parseInt(document.getElementById('efCapacity').value) };
+            const res = id ? await api('PUT', '/events/' + id, body) : await api('POST', '/events', body);
+            if (res.id) { closeModal('eventFormModal'); toast(id ? '✅ Event updated!' : '✅ Event created!'); loadDashboard(); }
+            else toast('❌ ' + (res.message || 'Failed to save.'), true);
+        }
+
+        async function deleteEvent(id) {
+            if (!confirm('Delete this event?')) return;
+            const ok = await fetch(`${API}/events/${id}`, { method: 'DELETE', headers: { 'Authorization': 'Bearer ' + token } });
+            if (ok.status === 204) { toast('🗑 Event deleted.'); loadDashboard(); }
+            else toast('❌ Could not delete event.', true);
+        }
+
+        async function viewRegistrations(eventId, eventTitle) {
+            const regs = await api('GET', '/registrations/event/' + eventId);
+            const content = !Array.isArray(regs) || !regs.length
+                ? '<div class="empty-state"><div class="empty-state-icon">👥</div><p>No registrations yet.</p></div>'
+                : `<div class="table-wrapper"><table>
+                        <thead><tr><th>#</th><th>Name</th><th>Registered On</th></tr></thead>
+                        <tbody>${regs.map((r, i) => `<tr><td style="color:var(--muted)">${i + 1}</td><td><strong>${r.userName}</strong></td><td>${new Date(r.registeredAt).toLocaleDateString('en-LK', { day: 'numeric', month: 'short', year: 'numeric' })}</td></tr>`).join('')}</tbody>
+                    </table></div>`;
+            const overlay = document.createElement('div');
+            overlay.style.cssText = 'position:fixed;inset:0;background:rgba(26,10,0,0.85);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;';
+            overlay.innerHTML = `
+                    <div style="background:var(--white);border-radius:6px;padding:2rem;width:100%;max-width:520px;max-height:85vh;overflow-y:auto;box-shadow:0 32px 100px rgba(0,0,0,0.5);border-top:3px solid var(--saffron);">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;">
+                            <div>
+                                <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--dark);">Registrations</h2>
+                                <p style="font-size:0.82rem;color:var(--muted);margin-top:0.2rem;">${eventTitle}</p>
+                                <p style="font-size:0.8rem;color:var(--saffron);font-weight:600;margin-top:0.3rem;">Total: ${Array.isArray(regs) ? regs.length : 0}</p>
+                            </div>
+                            <button onclick="this.closest('.regs-overlay').remove()" style="background:var(--ivory);border:1px solid var(--ivory3);width:34px;height:34px;border-radius:50%;font-size:1rem;cursor:pointer;color:var(--muted);">✕</button>
+                        </div>
+                        ${content}
+                    </div>`;
+            overlay.classList.add('regs-overlay');
+            overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+            document.body.appendChild(overlay);
+        }
+
+        async function loadMyRegistrations() {
+            const regs = await api('GET', '/registrations/my');
+            const c = document.getElementById('myRegsList');
+            if (!Array.isArray(regs) || !regs.length) {
+                c.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🎟</div><p>No registrations yet.</p><button class="btn btn-saffron" style="margin-top:1rem" onclick="showPage('events')">Browse Events</button></div>`; return;
+            }
+            c.innerHTML = regs.map(r => `
+                    <div class="reg-card">
+                        <div>
+                            <div class="reg-title">${r.eventTitle}</div>
+                            <div class="reg-date">Registered on ${new Date(r.registeredAt).toLocaleDateString('en-LK', { day: 'numeric', month: 'long', year: 'numeric' })}</div>
+                        </div>
+                        <button class="btn btn-red btn-sm" onclick="unregister(${r.eventId})">Cancel</button>
+                    </div>`).join('');
+        }
+
+        async function unregister(eventId) {
+            if (!confirm('Cancel your registration?')) return;
+            const res = await api('DELETE', '/registrations/' + eventId);
+            toast(res.message || 'Unregistered.'); loadMyRegistrations();
+        }
+
+        async function api(method, path, body = null, auth = true) {
+            const headers = { 'Content-Type': 'application/json' };
+            if (auth && token) headers['Authorization'] = 'Bearer ' + token;
+            try {
+                const res = await fetch(API + path, { method, headers, body: body ? JSON.stringify(body) : undefined });
+                if (res.status === 204) return {};
+                return await res.json();
+            } catch (e) { return { message: 'Cannot connect to API. Make sure the server is running.' }; }
+        }
+
+        function openModal(id) { document.getElementById(id).classList.add('open'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+        function switchModal(from, to) { closeModal(from); openModal(to); }
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('open'); });
+        });
+
+        let toastTimer;
+        function toast(msg, isError = false) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.style.borderLeftColor = isError ? 'var(--red)' : 'var(--saffron)';
+            t.style.display = 'block';
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => t.style.display = 'none', 3500);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,2609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velora Events — Kandy's Premier Event Company</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --espresso: #1c1008;
+            --espresso2: #2a1a0c;
+            --espresso3: #3a2515;
+            --clay: #c96b3a;
+            --clay-light: #e08a5a;
+            --clay-pale: rgba(201,107,58,0.1);
+            --parchment: #faf6ef;
+            --parchment2: #f2ead8;
+            --parchment3: #e8dcc4;
+            --stone: #8a7a68;
+            --stone2: #6b5c4c;
+            --white: #ffffff;
+            --red: #c0392b;
+            --sage: #5a7a5e;
+            --kmc-color: #1a6b8a;
+            --kmc-pale: rgba(26,107,138,0.1);
+            --kmc-light: #2a8aad;
+            --shadow: 0 2px 20px rgba(28,16,8,0.08);
+            --shadow-md: 0 6px 32px rgba(28,16,8,0.12);
+            --shadow-lg: 0 16px 56px rgba(28,16,8,0.18);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Figtree', sans-serif;
+            background: var(--parchment);
+            color: var(--espresso);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--parchment2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--clay);
+        }
+
+        /* NAV */
+        nav {
+            background: var(--espresso);
+            padding: 0 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 66px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            cursor: pointer;
+        }
+
+        .nav-logo-mark {
+            width: 34px;
+            height: 34px;
+            border: 1.5px solid var(--clay);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .nav-logo-mark::before {
+                content: '';
+                width: 10px;
+                height: 10px;
+                background: var(--clay);
+                border-radius: 50%;
+            }
+
+        .nav-logo-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--parchment);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-logo-tagline {
+            font-size: 0.55rem;
+            color: var(--stone);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-top: 2px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.15rem;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: rgba(250,246,239,0.55);
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.45rem 1rem;
+            transition: color 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+            .nav-btn:hover, .nav-btn.active {
+                color: var(--clay-light);
+            }
+
+            .nav-btn.cta {
+                background: var(--clay);
+                color: var(--white);
+                font-weight: 600;
+                padding: 0.45rem 1.25rem;
+                margin-left: 0.35rem;
+            }
+
+                .nav-btn.cta:hover {
+                    background: var(--clay-light);
+                }
+
+            .nav-btn.cta-outline {
+                background: transparent;
+                color: rgba(250,246,239,0.75);
+                border: 1px solid rgba(201,107,58,0.45);
+                font-weight: 600;
+                padding: 0.4rem 1.1rem;
+                margin-left: 0.35rem;
+            }
+
+                .nav-btn.cta-outline:hover {
+                    border-color: var(--clay-light);
+                    color: var(--clay-light);
+                }
+
+        .nav-divider {
+            width: 1px;
+            height: 18px;
+            background: rgba(255,255,255,0.1);
+            margin: 0 0.5rem;
+        }
+
+        #userInfo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: rgba(250,246,239,0.55);
+            font-size: 0.82rem;
+        }
+
+            #userInfo strong {
+                color: var(--clay-light);
+            }
+
+        .user-avatar {
+            width: 30px;
+            height: 30px;
+            border: 1.5px solid var(--clay);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--clay-light);
+            font-family: 'Fraunces', serif;
+        }
+
+        .public-avatar {
+            border-color: var(--kmc-color);
+            color: #7dd3ef;
+        }
+
+        .page {
+            display: none;
+        }
+
+            .page.active {
+                display: block;
+            }
+
+        /* HERO */
+        .hero {
+            min-height: calc(100vh - 66px);
+            display: grid;
+            grid-template-columns: 55% 45%;
+        }
+
+        .hero-left {
+            padding: 7rem 4rem 5rem 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid var(--parchment3);
+            position: relative;
+        }
+
+            .hero-left::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: -1px;
+                width: 1px;
+                height: 60%;
+                background: linear-gradient(to bottom, transparent, var(--clay), transparent);
+            }
+
+        .hero-right {
+            background: var(--espresso);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-right-img {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(28,16,8,0.2) 0%, rgba(28,16,8,0.75) 100%), url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80') center/cover no-repeat;
+        }
+
+        .hero-right-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-overline {
+            font-size: 0.68rem;
+            color: var(--clay);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: fadeUp 0.6s ease both;
+        }
+
+            .hero-overline::before {
+                content: '';
+                width: 24px;
+                height: 1px;
+                background: var(--clay);
+            }
+
+        .hero h1 {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(3rem, 5vw, 4.8rem);
+            font-weight: 600;
+            line-height: 1.08;
+            color: var(--espresso);
+            margin-bottom: 1.75rem;
+            animation: fadeUp 0.7s 0.08s ease both;
+        }
+
+            .hero h1 em {
+                font-style: italic;
+                color: var(--clay);
+            }
+
+        .hero-body {
+            font-size: 0.95rem;
+            color: var(--stone2);
+            max-width: 420px;
+            line-height: 1.85;
+            margin-bottom: 3rem;
+            animation: fadeUp 0.8s 0.16s ease both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeUp 0.9s 0.22s ease both;
+        }
+
+        .hero-badge-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .hero-badge-item {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            font-size: 0.83rem;
+            color: rgba(250,246,239,0.7);
+            padding-bottom: 0.85rem;
+            border-bottom: 1px solid rgba(250,246,239,0.08);
+        }
+
+            .hero-badge-item:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+        .hero-badge-icon {
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .hero-badge-val {
+            color: var(--parchment);
+            font-weight: 600;
+            margin-left: auto;
+            font-size: 0.8rem;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        /* BUTTONS */
+        .btn {
+            padding: 0.8rem 2.25rem;
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-clay {
+            background: var(--clay);
+            color: var(--white);
+            box-shadow: 0 4px 18px rgba(201,107,58,0.3);
+        }
+
+            .btn-clay:hover {
+                background: var(--clay-light);
+                transform: translateY(-1px);
+            }
+
+        .btn-outline-espresso {
+            background: transparent;
+            color: var(--espresso);
+            border: 1.5px solid var(--espresso);
+        }
+
+            .btn-outline-espresso:hover {
+                background: var(--espresso);
+                color: var(--parchment);
+            }
+
+        .btn-outline-clay {
+            background: transparent;
+            color: var(--clay);
+            border: 1.5px solid var(--clay);
+        }
+
+            .btn-outline-clay:hover {
+                background: var(--clay-pale);
+            }
+
+        .btn-ghost-light {
+            background: rgba(250,246,239,0.1);
+            color: var(--parchment);
+            border: 1px solid rgba(250,246,239,0.2);
+        }
+
+            .btn-ghost-light:hover {
+                background: rgba(250,246,239,0.18);
+                border-color: var(--clay-light);
+                color: var(--clay-light);
+            }
+
+        .btn-espresso {
+            background: var(--espresso);
+            color: var(--parchment);
+        }
+
+            .btn-espresso:hover {
+                background: var(--espresso2);
+            }
+
+        .btn-sage {
+            background: var(--sage);
+            color: var(--white);
+        }
+
+        .btn-danger {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .btn-kmc {
+            background: var(--kmc-color);
+            color: var(--white);
+        }
+
+            .btn-kmc:hover {
+                background: var(--kmc-light);
+            }
+
+        .btn-sm {
+            font-size: 0.7rem;
+            padding: 0.38rem 0.9rem;
+            letter-spacing: 0.75px;
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* SECTIONS */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 3rem;
+        }
+
+        .section-overline {
+            font-size: 0.65rem;
+            color: var(--clay);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+            .section-overline::before {
+                content: '';
+                width: 20px;
+                height: 1px;
+                background: var(--clay);
+            }
+
+        .section-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--espresso);
+            line-height: 1.12;
+            margin-bottom: 0.75rem;
+        }
+
+            .section-title em {
+                font-style: italic;
+                color: var(--clay);
+            }
+
+        .section-sub {
+            color: var(--stone);
+            font-size: 0.92rem;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+        /* EVENT TYPE STRIP */
+        .event-types-strip {
+            background: var(--espresso);
+            padding: 3.5rem 5rem;
+            display: flex;
+            gap: 0;
+        }
+
+        .event-type-item {
+            flex: 1;
+            padding: 2rem 1.5rem;
+            border-right: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+            transition: background 0.2s;
+        }
+
+            .event-type-item:last-child {
+                border-right: none;
+            }
+
+            .event-type-item:hover {
+                background: rgba(201,107,58,0.08);
+            }
+
+        .event-type-emoji {
+            font-size: 1.8rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .event-type-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            color: var(--parchment);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .event-type-desc {
+            font-size: 0.72rem;
+            color: var(--stone);
+            line-height: 1.6;
+        }
+
+        /* EVENT CARDS */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .event-card {
+            background: var(--white);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--parchment2);
+            cursor: pointer;
+            position: relative;
+        }
+
+            .event-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+        .event-card-img {
+            height: 185px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+            .event-card-img::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(28,16,8,0.7) 0%, transparent 55%);
+            }
+
+        .event-card-img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.9rem;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .event-type-badge {
+            display: inline-block;
+            background: var(--clay);
+            color: var(--white);
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0.2rem 0.65rem;
+        }
+
+        .kmc-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: var(--kmc-color);
+            color: var(--white);
+            font-size: 0.58rem;
+            font-weight: 700;
+            padding: 0.2rem 0.55rem;
+            letter-spacing: 1px;
+        }
+
+        .kmc-badge-dot {
+            width: 5px;
+            height: 5px;
+            background: #7dd3ef;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .event-card-body {
+            padding: 1.25rem 1.4rem 0.75rem;
+        }
+
+        .event-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--espresso);
+            margin-bottom: 0.55rem;
+            line-height: 1.25;
+        }
+
+        .event-meta {
+            font-size: 0.78rem;
+            color: var(--stone);
+            margin-bottom: 0.22rem;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .event-desc {
+            font-size: 0.82rem;
+            color: var(--stone2);
+            margin: 0.65rem 0 0;
+            line-height: 1.65;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .event-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 1.4rem;
+            background: var(--parchment);
+            border-top: 1px solid var(--parchment2);
+            gap: 0.75rem;
+        }
+
+        .capacity-bar {
+            flex: 1;
+        }
+
+        .capacity-label {
+            font-size: 0.68rem;
+            color: var(--stone);
+            margin-bottom: 0.3rem;
+        }
+
+        .capacity-track {
+            height: 2px;
+            background: var(--parchment3);
+            overflow: hidden;
+        }
+
+        .capacity-fill {
+            height: 100%;
+            background: var(--clay);
+            transition: width 0.5s;
+        }
+
+        /* REGISTER BUTTON on card */
+        .register-btn-wrap {
+            flex-shrink: 0;
+        }
+
+        .btn-register {
+            font-size: 0.65rem;
+            padding: 0.38rem 0.85rem;
+            letter-spacing: 0.75px;
+            background: var(--clay);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-family: 'Figtree', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: background 0.2s;
+        }
+
+            .btn-register:hover {
+                background: var(--clay-light);
+            }
+
+            .btn-register.registered {
+                background: var(--sage);
+                cursor: default;
+            }
+
+            .btn-register.full {
+                background: var(--parchment3);
+                color: var(--stone2);
+                cursor: not-allowed;
+            }
+
+        /* MODALS */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(28,16,8,0.78);
+            backdrop-filter: blur(6px);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+            .modal-overlay.open {
+                display: flex;
+            }
+
+        .modal {
+            background: var(--white);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 460px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            animation: modalIn 0.25s ease;
+            border-top: 3px solid var(--clay);
+        }
+
+            .modal.kmc-accent {
+                border-top-color: var(--kmc-color);
+            }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(14px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .modal-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--parchment2);
+        }
+
+            .modal-header h2 {
+                font-family: 'Fraunces', serif;
+                font-size: 1.9rem;
+                color: var(--espresso);
+                font-weight: 600;
+                margin-bottom: 0.2rem;
+            }
+
+            .modal-header p {
+                font-size: 0.82rem;
+                color: var(--stone);
+            }
+
+        .form-group {
+            margin-bottom: 1.1rem;
+        }
+
+            .form-group label {
+                display: block;
+                font-size: 0.68rem;
+                font-weight: 700;
+                color: var(--stone2);
+                margin-bottom: 0.4rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+            }
+
+            .form-group input, .form-group select, .form-group textarea {
+                width: 100%;
+                border: 1px solid var(--parchment3);
+                padding: 0.7rem 1rem;
+                font-family: 'Figtree', sans-serif;
+                font-size: 0.88rem;
+                background: var(--parchment);
+                color: var(--espresso);
+                outline: none;
+                transition: border 0.2s;
+            }
+
+                .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+                    border-color: var(--clay);
+                    box-shadow: 0 0 0 3px rgba(201,107,58,0.08);
+                }
+
+            .form-group textarea {
+                resize: vertical;
+                min-height: 88px;
+            }
+
+        .form-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .form-toggle {
+            text-align: center;
+            margin-top: 1.1rem;
+            font-size: 0.82rem;
+            color: var(--stone);
+        }
+
+            .form-toggle a {
+                color: var(--clay);
+                cursor: pointer;
+                font-weight: 600;
+            }
+
+        /* AUTH TABS */
+        .auth-tab-bar {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--parchment2);
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 0.75rem;
+            background: none;
+            border: none;
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: var(--stone);
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+
+            .auth-tab.active {
+                color: var(--clay);
+                border-bottom-color: var(--clay);
+            }
+
+        /* PUBLIC AUTH MODAL — kmc accent */
+        .public-tab.active {
+            color: var(--kmc-color);
+            border-bottom-color: var(--kmc-color);
+        }
+
+        /* KMC TOGGLE */
+        .kmc-toggle-box {
+            border: 1.5px solid var(--parchment3);
+            padding: 1.25rem 1.25rem 1.25rem 1rem;
+            margin: 1.25rem 0;
+            position: relative;
+            background: var(--parchment);
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+            .kmc-toggle-box.active {
+                border-color: var(--kmc-color);
+                background: rgba(26,107,138,0.04);
+            }
+
+        .kmc-toggle-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .kmc-toggle-info {
+            flex: 1;
+        }
+
+        .kmc-toggle-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--espresso);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .kmc-logo-pill {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: var(--kmc-color);
+            color: var(--white);
+            padding: 0.12rem 0.5rem;
+        }
+
+        .kmc-toggle-desc {
+            font-size: 0.75rem;
+            color: var(--stone);
+            line-height: 1.6;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+            .toggle-switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+                position: absolute;
+            }
+
+        .toggle-track {
+            position: absolute;
+            inset: 0;
+            background: var(--parchment3);
+            border-radius: 12px;
+            transition: background 0.2s;
+        }
+
+        .toggle-thumb {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 18px;
+            height: 18px;
+            background: var(--white);
+            border-radius: 50%;
+            transition: transform 0.2s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        }
+
+        .toggle-switch input:checked ~ .toggle-track {
+            background: var(--kmc-color);
+        }
+
+        .toggle-switch input:checked ~ .toggle-thumb {
+            transform: translateX(20px);
+        }
+
+        /* DASHBOARD */
+        .page-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+        }
+
+        .page-hero {
+            background: var(--espresso);
+            padding: 4rem 5rem 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .page-hero::before {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 45%;
+                background: linear-gradient(135deg, rgba(201,107,58,0.06), rgba(201,107,58,0.02));
+            }
+
+            .page-hero::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 5rem;
+                right: 5rem;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, rgba(201,107,58,0.4), transparent);
+            }
+
+            .page-hero h1 {
+                font-family: 'Fraunces', serif;
+                font-size: 3rem;
+                color: var(--parchment);
+                font-weight: 600;
+                position: relative;
+                line-height: 1.1;
+                margin-bottom: 0.5rem;
+            }
+
+                .page-hero h1 em {
+                    font-style: italic;
+                    color: var(--clay-light);
+                }
+
+            .page-hero p {
+                color: rgba(250,246,239,0.45);
+                font-size: 0.84rem;
+                position: relative;
+                letter-spacing: 0.5px;
+            }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--parchment3);
+        }
+
+            .dash-header h2 {
+                font-family: 'Fraunces', serif;
+                font-size: 1.8rem;
+                color: var(--espresso);
+                font-weight: 600;
+            }
+
+            .dash-header p {
+                color: var(--stone);
+                font-size: 0.82rem;
+                margin-top: 0.3rem;
+            }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-bottom: 3rem;
+            border: 1px solid var(--parchment3);
+        }
+
+        .stat-card {
+            padding: 1.75rem 2rem;
+            background: var(--white);
+            border-right: 1px solid var(--parchment3);
+        }
+
+            .stat-card:last-child {
+                border-right: none;
+            }
+
+            .stat-card:first-child {
+                border-left: 3px solid var(--clay);
+            }
+
+        .stat-num {
+            font-family: 'Fraunces', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--clay);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            color: var(--stone);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+        }
+
+        .table-wrapper {
+            border: 1px solid var(--parchment3);
+            overflow: hidden;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        th {
+            background: var(--espresso2);
+            color: var(--clay-light);
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 0.9rem 1.25rem;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(201,107,58,0.2);
+        }
+
+        td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--parchment2);
+            font-size: 0.84rem;
+            vertical-align: middle;
+            background: var(--white);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: var(--parchment);
+        }
+
+        .td-actions {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .kmc-on {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: var(--kmc-color);
+            color: var(--white);
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 0.2rem 0.55rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .kmc-on-dot {
+            width: 5px;
+            height: 5px;
+            background: #7dd3ef;
+            border-radius: 50%;
+            animation: pulse 2s ease infinite;
+        }
+
+        .kmc-off {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: var(--parchment3);
+            color: var(--stone2);
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 0.2rem 0.55rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        @keyframes pulse {
+            0%,100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0.4
+            }
+        }
+
+        .search-section {
+            background: var(--white);
+            border: 1px solid var(--parchment3);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-top: 3px solid var(--clay);
+        }
+
+        .search-fields {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+
+        .search-field {
+            flex: 1;
+            min-width: 140px;
+        }
+
+            .search-field label {
+                font-size: 0.65rem;
+                font-weight: 700;
+                color: var(--stone);
+                display: block;
+                margin-bottom: 0.35rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+            }
+
+            .search-field input, .search-field select {
+                width: 100%;
+                border: 1px solid var(--parchment3);
+                padding: 0.6rem 0.9rem;
+                font-family: 'Figtree', sans-serif;
+                font-size: 0.86rem;
+                background: var(--parchment);
+                color: var(--espresso);
+                outline: none;
+                transition: border 0.2s;
+            }
+
+                .search-field input:focus, .search-field select:focus {
+                    border-color: var(--clay);
+                }
+
+        #toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--espresso);
+            color: var(--parchment);
+            border-left: 3px solid var(--clay);
+            padding: 1rem 1.5rem;
+            font-size: 0.83rem;
+            z-index: 9999;
+            display: none;
+            box-shadow: var(--shadow-lg);
+            max-width: 320px;
+            line-height: 1.5;
+        }
+
+        .img-tabs {
+            display: flex;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--parchment3);
+        }
+
+        .img-tab-btn {
+            flex: 1;
+            padding: 0.5rem;
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.15s;
+        }
+
+            .img-tab-btn.active {
+                background: var(--clay);
+                color: var(--white);
+            }
+
+            .img-tab-btn:not(.active) {
+                background: var(--parchment);
+                color: var(--stone);
+            }
+
+        .drop-zone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+            border: 1px dashed var(--parchment3);
+            padding: 1.75rem;
+            cursor: pointer;
+            background: var(--parchment);
+            transition: border 0.2s;
+            font-size: 0.75rem;
+            color: var(--stone);
+            letter-spacing: 0.5px;
+        }
+
+            .drop-zone:hover {
+                border-color: var(--clay);
+                color: var(--clay);
+            }
+
+        .drop-zone-icon {
+            font-size: 1.4rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--stone);
+        }
+
+        .empty-state-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            opacity: 0.35;
+        }
+
+        .empty-state p {
+            font-size: 0.88rem;
+        }
+
+        .cta-band {
+            background: var(--clay);
+            padding: 4rem 5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .cta-band-text h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 2.2rem;
+            color: var(--white);
+            font-weight: 600;
+            line-height: 1.15;
+        }
+
+        .cta-band-text p {
+            color: rgba(255,255,255,0.72);
+            font-size: 0.88rem;
+            margin-top: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .site-footer {
+            background: var(--espresso);
+            padding: 3.5rem 5rem 2.5rem;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 3rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            flex-wrap: wrap;
+        }
+
+        .footer-brand-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            color: var(--parchment);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand-desc {
+            font-size: 0.8rem;
+            color: var(--stone);
+            line-height: 1.7;
+            max-width: 260px;
+        }
+
+        .footer-col-title {
+            font-size: 0.62rem;
+            color: var(--clay);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            display: block;
+            font-size: 0.8rem;
+            color: rgba(250,246,239,0.45);
+            margin-bottom: 0.55rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+            .footer-link:hover {
+                color: var(--clay-light);
+            }
+
+        .footer-bottom {
+            padding-top: 1.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copy {
+            font-size: 0.72rem;
+            color: rgba(250,246,239,0.25);
+        }
+
+        .demo-box {
+            background: var(--espresso2);
+            border-left: 3px solid var(--clay);
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.8rem;
+            color: rgba(250,246,239,0.65);
+            line-height: 1.9;
+        }
+
+            .demo-box strong {
+                color: var(--clay-light);
+            }
+
+        .filter-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 2rem;
+            border: 1px solid var(--parchment3);
+            width: fit-content;
+        }
+
+        .filter-tab {
+            padding: 0.5rem 1.25rem;
+            font-family: 'Figtree', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.15s;
+            border-right: 1px solid var(--parchment3);
+            background: var(--white);
+            color: var(--stone);
+        }
+
+            .filter-tab:last-child {
+                border-right: none;
+            }
+
+            .filter-tab.active {
+                background: var(--espresso);
+                color: var(--clay-light);
+            }
+
+            .filter-tab.kmc-tab.active {
+                background: var(--kmc-color);
+                color: var(--white);
+            }
+
+        /* MY EVENTS PAGE */
+        .my-events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .my-event-card {
+            background: var(--white);
+            border: 1px solid var(--parchment2);
+            padding: 1.4rem;
+            position: relative;
+        }
+
+        .my-event-card-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--espresso);
+            margin-bottom: 0.4rem;
+        }
+
+        .my-event-card-meta {
+            font-size: 0.76rem;
+            color: var(--stone);
+            line-height: 1.7;
+        }
+
+        .cancel-reg-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.65rem;
+            padding: 0.3rem 0.65rem;
+            background: none;
+            border: 1px solid rgba(192,57,43,0.35);
+            color: var(--red);
+            cursor: pointer;
+            font-family: 'Figtree', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.75px;
+            transition: all 0.2s;
+        }
+
+            .cancel-reg-btn:hover {
+                background: var(--red);
+                color: var(--white);
+            }
+
+        /* NOTICE */
+        .notice {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            background: var(--kmc-pale);
+            border-left: 3px solid var(--kmc-color);
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.82rem;
+            color: var(--stone2);
+            line-height: 1.65;
+        }
+
+        .notice-icon {
+            color: var(--kmc-color);
+            font-weight: 700;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 860px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-right {
+                display: none;
+            }
+
+            .hero-left {
+                padding: 4rem 2rem 3rem;
+            }
+
+            nav {
+                padding: 0 1.5rem;
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .page-hero {
+                padding: 3rem 2rem 2.5rem;
+            }
+
+            .page-inner, .section {
+                padding: 3rem 1.5rem;
+            }
+
+            .event-types-strip {
+                padding: 2.5rem 2rem;
+                flex-wrap: wrap;
+            }
+
+            .cta-band {
+                padding: 3rem 2rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .site-footer {
+                padding: 3rem 2rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-logo" onclick="showPage('home')">
+            <div class="nav-logo-mark"></div>
+            <div>
+                <div class="nav-logo-name">Velora Events</div>
+                <span class="nav-logo-tagline">Kandy's Event Company</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn active" id="navHome" onclick="showPage('home')">Home</button>
+            <button class="nav-btn" onclick="showPage('browse')">Our Events</button>
+
+            <!-- GUEST NAV: shown when nobody is logged in -->
+            <div id="guestNav" style="display:flex;align-items:center;gap:0.15rem;">
+                <div class="nav-divider"></div>
+                <button class="nav-btn cta-outline" onclick="openModal('publicAuthModal')">Sign In / Register</button>
+                <button class="nav-btn cta" onclick="openModal('staffAuthModal')">Staff Login</button>
+            </div>
+
+            <!-- PUBLIC USER NAV -->
+            <div id="publicUserNav" style="display:none;align-items:center;gap:0.5rem;">
+                <div id="publicUserInfo"></div>
+                <button class="nav-btn" onclick="showPage('myEvents')">My Events</button>
+                <button class="nav-btn" onclick="logoutPublic()">Sign Out</button>
+            </div>
+
+            <!-- STAFF USER NAV -->
+            <div id="staffUserNav" style="display:none;align-items:center;gap:0.5rem;">
+                <div id="staffUserInfo"></div>
+                <button class="nav-btn" id="dashBtn" onclick="showPage('dashboard')">Dashboard</button>
+                <button class="nav-btn" onclick="logoutStaff()">Sign Out</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════ HOME ═══════════════ -->
+    <div id="page-home" class="page active">
+        <div class="hero">
+            <div class="hero-left">
+                <div>
+                    <div class="hero-overline">Kandy's Premier Event Company</div>
+                    <h1>We create events<br>that bring <em>Kandy</em><br>to life.</h1>
+                    <p class="hero-body">Velora Events is Kandy's dedicated event management company — crafting unforgettable cultural celebrations, music nights, food festivals, sports gatherings, and community experiences across the city.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-clay" onclick="showPage('browse')">Explore Our Events</button>
+                        <button class="btn btn-outline-espresso" onclick="openModal('publicAuthModal')">Register Free</button>
+                    </div>
+                </div>
+                <div style="margin-top:4rem;">
+                    <div style="font-size:0.65rem;color:var(--stone);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:1.25rem;">Why Kandy chooses Velora</div>
+                    <div style="display:flex;gap:2.5rem;">
+                        <div><div style="font-family:'Fraunces',serif;font-size:2rem;font-weight:600;color:var(--clay);line-height:1;">5+</div><div style="font-size:0.65rem;color:var(--stone);letter-spacing:1.5px;text-transform:uppercase;margin-top:0.25rem;">Event Types</div></div>
+                        <div><div style="font-family:'Fraunces',serif;font-size:2rem;font-weight:600;color:var(--clay);line-height:1;">Live</div><div style="font-size:0.65rem;color:var(--stone);letter-spacing:1.5px;text-transform:uppercase;margin-top:0.25rem;">Attendee Data</div></div>
+                        <div><div style="font-family:'Fraunces',serif;font-size:2rem;font-weight:600;color:var(--clay);line-height:1;">KMC</div><div style="font-size:0.65rem;color:var(--stone);letter-spacing:1.5px;text-transform:uppercase;margin-top:0.25rem;">City Partner</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-right-img"></div>
+                <div class="hero-right-content">
+                    <div style="font-size:0.62rem;color:rgba(250,246,239,0.4);text-transform:uppercase;letter-spacing:3px;margin-bottom:1.5rem;">What we offer</div>
+                    <div class="hero-badge-list">
+                        <div class="hero-badge-item"><span class="hero-badge-icon">→</span><span>Cultural celebrations & festivals</span><span class="hero-badge-val">City-wide</span></div>
+                        <div class="hero-badge-item"><span class="hero-badge-icon">→</span><span>Live music & entertainment nights</span><span class="hero-badge-val">Monthly</span></div>
+                        <div class="hero-badge-item"><span class="hero-badge-icon">→</span><span>Food & culinary experiences</span><span class="hero-badge-val">Seasonal</span></div>
+                        <div class="hero-badge-item"><span class="hero-badge-icon">→</span><span>Sports events & competitions</span><span class="hero-badge-val">Ongoing</span></div>
+                        <div class="hero-badge-item"><span class="hero-badge-icon">→</span><span>Community & business gatherings</span><span class="hero-badge-val">Year-round</span></div>
+                    </div>
+                    <div style="margin-top:2rem;padding-top:1.75rem;border-top:1px solid rgba(250,246,239,0.1);">
+                        <button class="btn btn-ghost-light" onclick="showPage('browse')" style="width:100%;">Browse all upcoming events →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-types-strip">
+            <div class="event-type-item"><span class="event-type-emoji">🎭</span><div class="event-type-name">Cultural</div><div class="event-type-desc">Traditional celebrations, heritage & art showcases</div></div>
+            <div class="event-type-item"><span class="event-type-emoji">🎵</span><div class="event-type-name">Music</div><div class="event-type-desc">Live concerts, jazz nights & performance showcases</div></div>
+            <div class="event-type-item"><span class="event-type-emoji">🍛</span><div class="event-type-name">Food</div><div class="event-type-desc">Culinary festivals, tasting events & experiences</div></div>
+            <div class="event-type-item"><span class="event-type-emoji">⚽</span><div class="event-type-name">Sports</div><div class="event-type-desc">Competitions, marathons & fitness events</div></div>
+            <div class="event-type-item"><span class="event-type-emoji">🤝</span><div class="event-type-name">Community</div><div class="event-type-desc">Volunteer days, social initiatives & city gatherings</div></div>
+        </div>
+
+        <div class="cta-band">
+            <div class="cta-band-text">
+                <h2>Ready to experience Kandy's<br>best events with Velora?</h2>
+                <p>Register free and secure your spot at any upcoming event.</p>
+            </div>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+                <button class="btn btn-espresso" onclick="showPage('browse')">Browse upcoming events →</button>
+                <button class="btn btn-outline-clay" style="border-color:rgba(255,255,255,0.5);color:#fff;" onclick="openModal('publicAuthModal')">Register free →</button>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-brand-name">Velora Events</div>
+                    <p class="footer-brand-desc">Kandy's premier event management company — creating cultural, music, food, sports, and community experiences.</p>
+                </div>
+                <div>
+                    <div class="footer-col-title">Events</div>
+                    <span class="footer-link" onclick="showPage('browse')">Browse All Events</span>
+                    <span class="footer-link" onclick="showPage('browse')">Cultural Events</span>
+                    <span class="footer-link" onclick="showPage('browse')">Music Events</span>
+                    <span class="footer-link" onclick="showPage('browse')">Food Events</span>
+                    <span class="footer-link" onclick="showPage('browse')">Sports Events</span>
+                </div>
+                <div>
+                    <div class="footer-col-title">Company</div>
+                    <span class="footer-link">About Velora</span>
+                    <span class="footer-link">Contact Us</span>
+                    <span class="footer-link" onclick="openModal('publicAuthModal')">Register / Sign In</span>
+                    <span class="footer-link" onclick="openModal('staffAuthModal')">Staff Login</span>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-copy">© 2026 Velora Events. All rights reserved. Kandy, Sri Lanka.</span>
+                <span class="footer-copy">Crafted with care for Kandy.</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ═══════════════ BROWSE (PUBLIC) ═══════════════ -->
+    <div id="page-browse" class="page">
+        <div class="page-hero">
+            <h1>Upcoming <em>Events</em></h1>
+            <p>All events created and managed by Velora Events — find your next experience in Kandy</p>
+        </div>
+        <div class="section">
+            <div class="search-section">
+                <div class="search-fields">
+                    <div class="search-field"><label>Keyword</label><input type="text" id="browseKeyword" placeholder="Search events..." /></div>
+                    <div class="search-field">
+                        <label>Type</label>
+                        <select id="browseType">
+                            <option value="">All Types</option>
+                            <option>Cultural</option>
+                            <option>Sports</option>
+                            <option>Music</option>
+                            <option>Food</option>
+                            <option>Community</option>
+                        </select>
+                    </div>
+                    <div class="search-field"><label>From date</label><input type="date" id="browseFrom" /></div>
+                    <div class="search-field"><label>To date</label><input type="date" id="browseTo" /></div>
+                    <div style="display:flex;gap:0.5rem;align-items:flex-end;">
+                        <button class="btn btn-clay btn-sm" onclick="searchBrowse()">Search</button>
+                        <button class="btn btn-outline-clay btn-sm" onclick="clearBrowse()">Clear</button>
+                    </div>
+                </div>
+            </div>
+            <div id="browseGrid" class="events-grid"></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ MY EVENTS (Public User) ═══════════════ -->
+    <div id="page-myEvents" class="page">
+        <div class="page-hero">
+            <h1>My <em>Registrations</em></h1>
+            <p>Events you've registered for through Velora</p>
+        </div>
+        <div class="page-inner">
+            <div id="myEventsContent"></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ DASHBOARD (Staff) ═══════════════ -->
+    <div id="page-dashboard" class="page">
+        <div class="page-hero">
+            <h1>Velora <em>Dashboard</em></h1>
+            <p>Create and manage all Velora events — with optional KMC city-wide publishing</p>
+        </div>
+        <div class="page-inner">
+            <div class="demo-box">
+                <strong>Staff login:</strong> Use your organizer credentials — password: <strong>password123</strong> &nbsp;|&nbsp;
+                Account: <strong>admin@velora.lk</strong> or <strong>admin@kmc.lk</strong>
+            </div>
+            <div id="dashStats" class="stat-grid" style="display:none;"></div>
+            <div class="dash-header">
+                <div>
+                    <h2>Our Events</h2>
+                    <p>Velora's events — toggle KMC publishing per event to control city-wide visibility</p>
+                </div>
+                <button class="btn btn-clay" onclick="openEventForm()">+ New Event</button>
+            </div>
+            <div class="filter-tabs" style="margin-bottom:1.5rem;">
+                <button class="filter-tab active" onclick="filterDash('all', this)">All Events</button>
+                <button class="filter-tab kmc-tab" onclick="filterDash('kmc', this)">On KMC</button>
+                <button class="filter-tab" onclick="filterDash('velora', this)">Velora Only</button>
+            </div>
+            <div id="dashTable"></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ PUBLIC AUTH MODAL ═══════════════ -->
+    <div class="modal-overlay" id="publicAuthModal">
+        <div class="modal kmc-accent">
+            <div class="auth-tab-bar">
+                <button id="pubTabSignIn" class="auth-tab public-tab active" onclick="switchPublicTab('signin')">Sign In</button>
+                <button id="pubTabRegister" class="auth-tab public-tab" onclick="switchPublicTab('register')">Register</button>
+            </div>
+
+            <!-- SIGN IN -->
+            <div id="pubPanelSignIn">
+                <div class="modal-header" style="margin-top:-0.5rem;">
+                    <h2>Welcome back</h2>
+                    <p>Sign in to your Velora account to register for events</p>
+                </div>
+                <div class="form-group"><label>Email Address</label><input type="email" id="pubLoginEmail" placeholder="you@example.com" /></div>
+                <div class="form-group"><label>Password</label><input type="password" id="pubLoginPassword" placeholder="••••••••" /></div>
+                <div class="form-actions">
+                    <button class="btn btn-clay btn-full" onclick="publicLogin()">Sign In →</button>
+                    <button class="btn btn-outline-clay" onclick="closeModal('publicAuthModal')">Cancel</button>
+                </div>
+                <div class="form-toggle">Don't have an account? <a onclick="switchPublicTab('register')">Register free</a></div>
+            </div>
+
+            <!-- REGISTER -->
+            <div id="pubPanelRegister" style="display:none;">
+                <div class="modal-header" style="margin-top:-0.5rem;">
+                    <h2>Create your account</h2>
+                    <p>Free registration — browse and book events across Kandy</p>
+                </div>
+                <div class="form-group"><label>Full Name</label><input type="text" id="pubRegName" placeholder="Your full name" /></div>
+                <div class="form-group"><label>Email Address</label><input type="email" id="pubRegEmail" placeholder="you@example.com" /></div>
+                <div class="form-group"><label>Password</label><input type="password" id="pubRegPassword" placeholder="Choose a strong password" /></div>
+                <div class="form-group"><label>Confirm Password</label><input type="password" id="pubRegPasswordConfirm" placeholder="Repeat your password" /></div>
+                <div class="form-actions">
+                    <button class="btn btn-clay btn-full" onclick="publicRegister()">Create Account →</button>
+                    <button class="btn btn-outline-clay" onclick="closeModal('publicAuthModal')">Cancel</button>
+                </div>
+                <div class="form-toggle">Already have an account? <a onclick="switchPublicTab('signin')">Sign in</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ STAFF AUTH MODAL ═══════════════ -->
+    <div class="modal-overlay" id="staffAuthModal">
+        <div class="modal">
+            <div class="auth-tab-bar">
+                <button id="tabSignIn" class="auth-tab active" onclick="switchStaffTab('signin')">Sign In</button>
+                <button id="tabCreate" class="auth-tab" onclick="switchStaffTab('create')">Create Account</button>
+            </div>
+
+            <!-- SIGN IN -->
+            <div id="panelSignIn">
+                <div class="modal-header" style="margin-top:-0.5rem;">
+                    <h2>Staff sign in</h2>
+                    <p>Access your Velora organizer dashboard</p>
+                </div>
+                <div class="form-group"><label>Email Address</label><input type="email" id="loginEmail" placeholder="you@velora.lk" /></div>
+                <div class="form-group"><label>Password</label><input type="password" id="loginPassword" placeholder="••••••••" /></div>
+                <div class="form-actions">
+                    <button class="btn btn-clay btn-full" onclick="staffLogin()">Sign In →</button>
+                    <button class="btn btn-outline-clay" onclick="closeModal('staffAuthModal')">Cancel</button>
+                </div>
+                <div style="margin-top:1rem;padding:0.85rem 1rem;background:var(--parchment2);font-size:0.75rem;color:var(--stone);line-height:1.8;">
+                    <strong style="color:var(--stone2);">Demo credentials</strong><br>
+                    Email: <strong style="color:var(--espresso);">organizer1@kmc.lk</strong> &nbsp;·&nbsp; Password: <strong style="color:var(--espresso);">password123</strong>
+                </div>
+            </div>
+
+            <!-- CREATE ACCOUNT -->
+            <div id="panelCreate" style="display:none;">
+                <div class="modal-header" style="margin-top:-0.5rem;">
+                    <h2>Create staff account</h2>
+                    <p>Set up your Velora admin credentials</p>
+                </div>
+                <div class="form-group"><label>Full Name</label><input type="text" id="createName" placeholder="Your full name" /></div>
+                <div class="form-group"><label>Email Address</label><input type="email" id="createEmail" placeholder="you@velora.lk" /></div>
+                <div class="form-group"><label>Password</label><input type="password" id="createPassword" placeholder="Choose a strong password" /></div>
+                <div class="form-group"><label>Confirm Password</label><input type="password" id="createPasswordConfirm" placeholder="Repeat your password" /></div>
+                <div class="form-actions">
+                    <button class="btn btn-clay btn-full" onclick="createStaffAccount()">Create Account →</button>
+                    <button class="btn btn-outline-clay" onclick="closeModal('staffAuthModal')">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ EVENT FORM MODAL ═══════════════ -->
+    <div class="modal-overlay" id="eventFormModal">
+        <div class="modal" style="max-width:540px;">
+            <div class="modal-header">
+                <h2 id="eventFormTitle">New Event</h2>
+                <p>Create a Velora event — choose whether to also publish it on the KMC website</p>
+            </div>
+            <input type="hidden" id="editEventId" />
+            <div class="form-group"><label>Event Title</label><input type="text" id="efTitle" placeholder="Give your event a clear name" /></div>
+            <div class="form-group"><label>Description</label><textarea id="efDesc" placeholder="Tell people what this event is about..."></textarea></div>
+            <div class="form-group"><label>Venue / Location</label><input type="text" id="efLocation" placeholder="Where in Kandy?" /></div>
+            <div class="form-group"><label>Date & Time</label><input type="datetime-local" id="efDate" /></div>
+            <div class="form-group">
+                <label>Event Type</label>
+                <select id="efType"><option>Cultural</option><option>Sports</option><option>Music</option><option>Food</option><option>Community</option></select>
+            </div>
+            <div class="form-group"><label>Capacity</label><input type="number" id="efCapacity" placeholder="Maximum number of attendees" min="1" /></div>
+            <div class="form-group">
+                <label>Event Image</label>
+                <div class="img-tabs">
+                    <button type="button" id="imgTabUpload" class="img-tab-btn active" onclick="switchImgTab('upload')">Upload File</button>
+                    <button type="button" id="imgTabUrl" class="img-tab-btn" onclick="switchImgTab('url')">Image URL</button>
+                </div>
+                <div id="imgPanelUpload">
+                    <label for="efImageFile" class="drop-zone" id="dropZone">
+                        <span class="drop-zone-icon">🖼</span>
+                        <span style="font-weight:600;">Click to choose a photo</span>
+                        <span style="font-size:0.68rem;opacity:0.7;">JPG, PNG or WEBP — max 5MB</span>
+                    </label>
+                    <input type="file" id="efImageFile" accept="image/*" style="display:none" onchange="handleImageFile(this)" />
+                </div>
+                <div id="imgPanelUrl" style="display:none;">
+                    <input type="url" id="efImageUrl" placeholder="https://..."
+                           style="width:100%;border:1px solid var(--parchment3);padding:0.7rem 1rem;font-family:'Figtree',sans-serif;font-size:0.87rem;background:var(--parchment);color:var(--espresso);outline:none;"
+                           oninput="previewImageFromUrl(this.value)" />
+                    <div style="font-size:0.68rem;color:var(--stone);margin-top:0.4rem;">Free images at <a href="https://unsplash.com" target="_blank" style="color:var(--clay);">unsplash.com</a></div>
+                </div>
+                <input type="hidden" id="efImageFinal" />
+            </div>
+            <div id="imagePreview" style="display:none;margin-top:0.5rem;margin-bottom:0.5rem;">
+                <div style="position:relative;">
+                    <img id="previewImg" src="" style="width:100%;height:145px;object-fit:cover;border:1px solid var(--parchment3);" />
+                    <button type="button" onclick="clearImage()" style="position:absolute;top:6px;right:6px;background:rgba(28,16,8,0.8);color:var(--clay-light);border:none;width:26px;height:26px;cursor:pointer;font-size:0.8rem;">✕</button>
+                </div>
+            </div>
+            <div class="kmc-toggle-box" id="kmcToggleBox">
+                <div class="kmc-toggle-header">
+                    <div class="kmc-toggle-info">
+                        <div class="kmc-toggle-title"><span>Also publish on KMC website</span><span class="kmc-logo-pill">KMC</span></div>
+                        <div class="kmc-toggle-desc">When enabled, this event will also appear on the Kandy Municipal Council's public website and be discoverable city-wide.</div>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="efPublishKmc" onchange="updateKmcToggleStyle()" />
+                        <div class="toggle-track"></div>
+                        <div class="toggle-thumb"></div>
+                    </label>
+                </div>
+                <div id="kmcToggleNote" style="display:none;margin-top:0.85rem;padding-top:0.85rem;border-top:1px solid rgba(26,107,138,0.15);font-size:0.75rem;color:var(--kmc-color);">
+                    ✓ This event will be visible on both the Velora website and the KMC public platform.
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-clay" style="flex:1" onclick="saveEvent()">Save Event →</button>
+                <button class="btn btn-outline-clay" onclick="closeModal('eventFormModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ EVENT REGISTRATION MODAL ═══════════════ -->
+    <div class="modal-overlay" id="eventRegModal">
+        <div class="modal kmc-accent" style="max-width:420px;">
+            <div class="modal-header">
+                <h2 id="regModalTitle">Register for Event</h2>
+                <p id="regModalSub">Confirm your spot — it's free</p>
+            </div>
+            <input type="hidden" id="regEventId" />
+            <input type="hidden" id="regEventSource" />
+            <div id="regModalBody">
+                <div class="notice">
+                    <span class="notice-icon">ℹ</span>
+                    <span>Your registration will be saved to your account. You can cancel it at any time from <strong>My Events</strong>.</span>
+                </div>
+                <div style="background:var(--parchment2);padding:1rem 1.25rem;margin-bottom:1.25rem;">
+                    <div style="font-size:0.65rem;color:var(--stone);text-transform:uppercase;letter-spacing:2px;margin-bottom:0.5rem;">Registering as</div>
+                    <div id="regAsName" style="font-weight:600;color:var(--espresso);font-size:0.95rem;"></div>
+                    <div id="regAsEmail" style="font-size:0.78rem;color:var(--stone);margin-top:0.15rem;"></div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-clay btn-full" onclick="confirmRegistration()">Confirm Registration →</button>
+                    <button class="btn btn-outline-clay" onclick="closeModal('eventRegModal')">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <script>
+        const API = 'https://localhost:7296/api';
+
+        // ── STATE ──
+        let staffToken = localStorage.getItem('vel_staff_token');
+        let staffUser = JSON.parse(localStorage.getItem('vel_staff_user') || 'null');
+        let publicUser = JSON.parse(localStorage.getItem('vel_pub_user') || 'null');
+
+        // Local storage for demo public users
+        let publicUsers = JSON.parse(localStorage.getItem('vel_pub_users') || '[]');
+        let publicRegistrations = JSON.parse(localStorage.getItem('vel_pub_regs') || '[]'); // [{userId, eventId, eventSource, eventTitle, eventDate, eventLocation, registeredAt}]
+
+        let veloraLocalEvents = JSON.parse(localStorage.getItem('vel_local_events') || '[]');
+        let localIdCounter = parseInt(localStorage.getItem('vel_local_counter') || '1000');
+        let dashFilter = 'all';
+
+        function savePublicUsers() { localStorage.setItem('vel_pub_users', JSON.stringify(publicUsers)); }
+        function savePublicRegs() { localStorage.setItem('vel_pub_regs', JSON.stringify(publicRegistrations)); }
+        function saveLocalEvents() { localStorage.setItem('vel_local_events', JSON.stringify(veloraLocalEvents)); localStorage.setItem('vel_local_counter', localIdCounter.toString()); }
+
+        function getEventImage(event) {
+            if (typeof event === 'object' && event.imageUrl) return event.imageUrl;
+            const type = typeof event === 'object' ? event.type : event;
+            const images = {
+                'Cultural': 'https://images.unsplash.com/photo-1519181245277-cffeb31da2e3?w=600&q=80',
+                'Sports': 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=80',
+                'Music': 'https://images.unsplash.com/photo-1501386761578-eaa54b384b46?w=600&q=80',
+                'Food': 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80',
+                'Community': 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80'
+            };
+            return images[type] || 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80';
+        }
+
+        window.addEventListener('DOMContentLoaded', () => { updateNav(); loadBrowse(); });
+
+        // ── NAV ──
+        function updateNav() {
+            const gN = document.getElementById('guestNav');
+            const puN = document.getElementById('publicUserNav');
+            const stN = document.getElementById('staffUserNav');
+            const puI = document.getElementById('publicUserInfo');
+            const stI = document.getElementById('staffUserInfo');
+
+            // reset all
+            gN.style.display = 'none';
+            puN.style.display = 'none';
+            stN.style.display = 'none';
+
+            if (staffUser) {
+                stN.style.display = 'flex';
+                const ini = staffUser.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+                stI.innerHTML = `<div class="user-avatar" style="display:flex;align-items:center;justify-content:center;">${ini}</div><span style="color:rgba(250,246,239,0.55);font-size:0.82rem;">Hi, <strong style="color:var(--clay-light);">${staffUser.name.split(' ')[0]}</strong></span>`;
+            } else if (publicUser) {
+                puN.style.display = 'flex';
+                const ini = publicUser.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+                puI.innerHTML = `<div class="user-avatar public-avatar" style="display:flex;align-items:center;justify-content:center;">${ini}</div><span style="color:rgba(250,246,239,0.55);font-size:0.82rem;">Hi, <strong style="color:#7dd3ef;">${publicUser.name.split(' ')[0]}</strong></span>`;
+            } else {
+                gN.style.display = 'flex';
+            }
+        }
+
+        function showPage(name) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + name).classList.add('active');
+            window.scrollTo(0, 0);
+            if (name === 'dashboard') { if (!staffUser) { openModal('staffAuthModal'); return; } loadDashboard(); }
+            if (name === 'browse') loadBrowse();
+            if (name === 'myEvents') loadMyEvents();
+        }
+
+        // ── PUBLIC AUTH ──
+        function switchPublicTab(tab) {
+            const isSignIn = tab === 'signin';
+            document.getElementById('pubPanelSignIn').style.display = isSignIn ? 'block' : 'none';
+            document.getElementById('pubPanelRegister').style.display = isSignIn ? 'none' : 'block';
+            document.getElementById('pubTabSignIn').className = 'auth-tab public-tab' + (isSignIn ? ' active' : '');
+            document.getElementById('pubTabRegister').className = 'auth-tab public-tab' + (!isSignIn ? ' active' : '');
+        }
+
+        function publicLogin() {
+            const email = document.getElementById('pubLoginEmail').value.trim().toLowerCase();
+            const pass = document.getElementById('pubLoginPassword').value;
+            if (!email || !pass) { toast('Please enter your email and password.', true); return; }
+            const user = publicUsers.find(u => u.email === email && u.password === pass);
+            if (!user) { toast('Incorrect email or password. Please try again.', true); return; }
+            publicUser = { id: user.id, name: user.name, email: user.email };
+            localStorage.setItem('vel_pub_user', JSON.stringify(publicUser));
+            closeModal('publicAuthModal');
+            updateNav();
+            toast('Welcome back, ' + user.name.split(' ')[0] + '!');
+            loadBrowse();
+        }
+
+        function publicRegister() {
+            const name = document.getElementById('pubRegName').value.trim();
+            const email = document.getElementById('pubRegEmail').value.trim().toLowerCase();
+            const pass = document.getElementById('pubRegPassword').value;
+            const confirm = document.getElementById('pubRegPasswordConfirm').value;
+            if (!name || !email || !pass) { toast('Please fill in all fields.', true); return; }
+            if (pass !== confirm) { toast('Passwords do not match.', true); return; }
+            if (pass.length < 6) { toast('Password must be at least 6 characters.', true); return; }
+            if (publicUsers.find(u => u.email === email)) { toast('An account with this email already exists. Please sign in.', true); return; }
+            const newUser = { id: Date.now(), name, email, password: pass };
+            publicUsers.push(newUser);
+            savePublicUsers();
+            publicUser = { id: newUser.id, name, email };
+            localStorage.setItem('vel_pub_user', JSON.stringify(publicUser));
+            closeModal('publicAuthModal');
+            updateNav();
+            toast('Account created! Welcome, ' + name.split(' ')[0] + '. You can now register for events.');
+            loadBrowse();
+        }
+
+        function logoutPublic() {
+            publicUser = null;
+            localStorage.removeItem('vel_pub_user');
+            updateNav();
+            showPage('home');
+            toast('You have been signed out.');
+        }
+
+        // ── STAFF AUTH ──
+        function switchStaffTab(tab) {
+            const isSignIn = tab === 'signin';
+            document.getElementById('panelSignIn').style.display = isSignIn ? 'block' : 'none';
+            document.getElementById('panelCreate').style.display = isSignIn ? 'none' : 'block';
+            document.getElementById('tabSignIn').className = 'auth-tab' + (isSignIn ? ' active' : '');
+            document.getElementById('tabCreate').className = 'auth-tab' + (!isSignIn ? ' active' : '');
+        }
+
+        async function staffLogin() {
+            const res = await api('POST', '/auth/login', {
+                email: document.getElementById('loginEmail').value,
+                password: document.getElementById('loginPassword').value
+            }, false);
+            if (res.token) {
+                staffToken = res.token;
+                staffUser = { name: res.name, role: res.role, userId: res.userId };
+                localStorage.setItem('vel_staff_token', staffToken);
+                localStorage.setItem('vel_staff_user', JSON.stringify(staffUser));
+                closeModal('staffAuthModal');
+                updateNav();
+                toast('Welcome back, ' + res.name + '.');
+                showPage('dashboard');
+            } else {
+                toast('Sign in failed — ' + (res.message || 'please check your credentials.'), true);
+            }
+        }
+
+        async function createStaffAccount() {
+            const name = document.getElementById('createName').value.trim();
+            const email = document.getElementById('createEmail').value.trim();
+            const password = document.getElementById('createPassword').value;
+            const confirm = document.getElementById('createPasswordConfirm').value;
+            if (!name || !email || !password) { toast('Please fill in all fields.', true); return; }
+            if (password !== confirm) { toast('Passwords do not match.', true); return; }
+            if (password.length < 6) { toast('Password must be at least 6 characters.', true); return; }
+            const res = await api('POST', '/auth/register', { name, email, password, role: 'Organizer' }, false);
+            if (res.token) {
+                staffToken = res.token;
+                staffUser = { name: res.name, role: res.role, userId: res.userId };
+                localStorage.setItem('vel_staff_token', staffToken);
+                localStorage.setItem('vel_staff_user', JSON.stringify(staffUser));
+                closeModal('staffAuthModal');
+                updateNav();
+                toast('Account created. Welcome, ' + res.name + '.');
+                showPage('dashboard');
+            } else {
+                toast('Could not create account — ' + (res.message || 'please try again.'), true);
+            }
+        }
+
+        function logoutStaff() {
+            staffToken = null; staffUser = null;
+            localStorage.removeItem('vel_staff_token');
+            localStorage.removeItem('vel_staff_user');
+            updateNav();
+            showPage('home');
+            toast('You have been signed out.');
+        }
+
+        // ── BROWSE ──
+        async function loadBrowse() {
+            const kmcEvents = await api('GET', '/events', null, false);
+            const kArr = Array.isArray(kmcEvents) ? kmcEvents.map(e => ({ ...e, _source: 'kmc' })) : [];
+            const vArr = veloraLocalEvents.map(e => ({ ...e, _source: 'velora' }));
+            renderPublicGrid([...vArr, ...kArr]);
+        }
+
+        async function searchBrowse() {
+            const kw = document.getElementById('browseKeyword').value.toLowerCase();
+            const tp = document.getElementById('browseType').value;
+            const fr = document.getElementById('browseFrom').value;
+            const to = document.getElementById('browseTo').value;
+            const kmcEvents = await api('GET', '/events', null, false);
+            const kArr = Array.isArray(kmcEvents) ? kmcEvents.map(e => ({ ...e, _source: 'kmc' })) : [];
+            const vArr = veloraLocalEvents.map(e => ({ ...e, _source: 'velora' }));
+            let merged = [...vArr, ...kArr];
+            if (kw) merged = merged.filter(e => e.title.toLowerCase().includes(kw) || e.location.toLowerCase().includes(kw));
+            if (tp) merged = merged.filter(e => e.type === tp);
+            if (fr) merged = merged.filter(e => new Date(e.eventDate) >= new Date(fr));
+            if (to) merged = merged.filter(e => new Date(e.eventDate) <= new Date(to));
+            renderPublicGrid(merged);
+        }
+
+        function clearBrowse() {
+            ['browseKeyword', 'browseFrom', 'browseTo'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('browseType').value = '';
+            loadBrowse();
+        }
+
+        function isRegisteredFor(eventId, source) {
+            if (!publicUser) return false;
+            return publicRegistrations.some(r => r.userId === publicUser.id && r.eventId == eventId && r.eventSource === source);
+        }
+
+        function renderPublicGrid(events) {
+            const c = document.getElementById('browseGrid');
+            if (!events.length) {
+                c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">◌</div><p>No events right now — check back soon.</p></div>';
+                return;
+            }
+            const seen = new Set();
+            const unique = events.filter(e => {
+                const key = (e._source || '') + '_' + e.id;
+                if (seen.has(key)) return false;
+                seen.add(key); return true;
+            });
+
+            c.innerHTML = unique.map(e => {
+                const pct = e.capacity > 0 ? Math.min(100, Math.round((e.registeredCount / e.capacity) * 100)) : 0;
+                const full = e.registeredCount >= e.capacity;
+                const imgUrl = getEventImage(e);
+                const ds = new Date(e.eventDate).toLocaleDateString('en-LK', { day: 'numeric', month: 'short', year: 'numeric' });
+                const isKmc = e._source === 'kmc';
+                const alreadyReg = isRegisteredFor(e.id, e._source);
+
+                let regBtn = '';
+                if (publicUser) {
+                    if (alreadyReg) {
+                        regBtn = `<button class="btn-register registered" disabled>✓ Registered</button>`;
+                    } else if (full) {
+                        regBtn = `<button class="btn-register full" disabled>Full</button>`;
+                    } else {
+                        regBtn = `<button class="btn-register" onclick="openEventReg(${e.id},'${e._source}',${JSON.stringify(e.title).replace(/"/g, "'")},${JSON.stringify(e.eventDate).replace(/"/g, "'")},${JSON.stringify(e.location).replace(/"/g, "'")})">Register</button>`;
+                    }
+                } else {
+                    regBtn = `<button class="btn-register" onclick="promptPublicLogin()">Register</button>`;
+                }
+
+                return `<div class="event-card">
+            <div class="event-card-img" style="background-image:url('${imgUrl}')">
+              <div class="event-card-img-overlay">
+                <span class="event-type-badge">${e.type}</span>
+                ${isKmc ? `<span class="kmc-badge"><span class="kmc-badge-dot"></span>KMC</span>` : ''}
+              </div>
+            </div>
+            <div class="event-card-body">
+              <div class="event-title">${e.title}</div>
+              <div class="event-meta">📅 ${ds}</div>
+              <div class="event-meta">📍 ${e.location}</div>
+              <div class="event-desc">${e.description}</div>
+            </div>
+            <div class="event-footer">
+              <div class="capacity-bar">
+                <div class="capacity-label">${e.registeredCount || 0} / ${e.capacity} spots ${full ? '— Full' : ''}</div>
+                <div class="capacity-track"><div class="capacity-fill" style="width:${pct}%"></div></div>
+              </div>
+              <div class="register-btn-wrap">${regBtn}</div>
+            </div>
+          </div>`;
+            }).join('');
+        }
+
+        function promptPublicLogin() {
+            openModal('publicAuthModal');
+            toast('Please sign in or register to book events.', false);
+        }
+
+        // ── EVENT REGISTRATION ──
+        function openEventReg(eventId, source, title, date, location) {
+            if (!publicUser) { promptPublicLogin(); return; }
+            document.getElementById('regEventId').value = eventId;
+            document.getElementById('regEventSource').value = source;
+            document.getElementById('regModalTitle').textContent = title;
+            document.getElementById('regModalSub').textContent = new Date(date).toLocaleDateString('en-LK', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) + ' · ' + location;
+            document.getElementById('regAsName').textContent = publicUser.name;
+            document.getElementById('regAsEmail').textContent = publicUser.email;
+            openModal('eventRegModal');
+        }
+
+        async function confirmRegistration() {
+            const eventId = document.getElementById('regEventId').value;
+            const source = document.getElementById('regEventSource').value;
+            const title = document.getElementById('regModalTitle').textContent;
+            const sub = document.getElementById('regModalSub').textContent;
+
+            // Check for duplicate
+            if (isRegisteredFor(eventId, source)) {
+                toast('You are already registered for this event.', true);
+                closeModal('eventRegModal');
+                return;
+            }
+
+            if (source === 'kmc') {
+                // Try API registration
+                const res = await api('POST', '/registrations', { eventId: parseInt(eventId) });
+                if (res && !res.message) {
+                    recordLocalReg(eventId, source, title, sub);
+                } else {
+                    // Fallback to local (API may not support it in demo)
+                    recordLocalReg(eventId, source, title, sub);
+                }
+            } else {
+                // Local event — increment count
+                const idx = veloraLocalEvents.findIndex(e => e.id == eventId);
+                if (idx >= 0) veloraLocalEvents[idx].registeredCount = (veloraLocalEvents[idx].registeredCount || 0) + 1;
+                saveLocalEvents();
+                recordLocalReg(eventId, source, title, sub);
+            }
+        }
+
+        function recordLocalReg(eventId, source, title, sub) {
+            publicRegistrations.push({
+                userId: publicUser.id,
+                eventId: eventId,
+                eventSource: source,
+                eventTitle: title,
+                eventSub: sub,
+                registeredAt: new Date().toISOString()
+            });
+            savePublicRegs();
+            closeModal('eventRegModal');
+            toast('🎉 You\'re registered for ' + title + '! Check My Events for your bookings.');
+            loadBrowse();
+        }
+
+        // ── MY EVENTS ──
+        function loadMyEvents() {
+            const c = document.getElementById('myEventsContent');
+            if (!publicUser) { c.innerHTML = '<div class="empty-state"><p>Please sign in to see your registrations.</p></div>'; return; }
+            const myRegs = publicRegistrations.filter(r => r.userId === publicUser.id);
+            if (!myRegs.length) {
+                c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">◌</div><p>You haven\'t registered for any events yet. <span style="color:var(--clay);cursor:pointer;" onclick="showPage(\'browse\')">Browse events →</span></p></div>';
+                return;
+            }
+            c.innerHTML = `
+          <div class="notice"><span class="notice-icon">ℹ</span><span>You have <strong>${myRegs.length}</strong> event registration${myRegs.length > 1 ? 's' : ''}. You can cancel any registration below.</span></div>
+          <div class="my-events-grid">
+            ${myRegs.map((r, i) => `
+              <div class="my-event-card">
+                <button class="cancel-reg-btn" onclick="cancelReg(${i}, ${JSON.stringify(r.eventId)}, '${r.eventSource}')">✕ Cancel</button>
+                <div class="my-event-card-title">${r.eventTitle}</div>
+                <div class="my-event-card-meta">
+                  ${r.eventSub}<br>
+                  <span style="font-size:0.7rem;color:var(--stone);margin-top:0.35rem;display:block;">Registered on ${new Date(r.registeredAt).toLocaleDateString('en-LK', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                </div>
+              </div>`).join('')}
+          </div>`;
+        }
+
+        function cancelReg(regIdx, eventId, source) {
+            if (!confirm('Cancel your registration for this event?')) return;
+            const userRegs = publicRegistrations.filter(r => r.userId === publicUser.id);
+            const reg = userRegs[regIdx];
+            if (!reg) return;
+            const globalIdx = publicRegistrations.indexOf(reg);
+            publicRegistrations.splice(globalIdx, 1);
+            savePublicRegs();
+            // Decrement local count if local event
+            if (source === 'velora') {
+                const idx = veloraLocalEvents.findIndex(e => e.id == eventId);
+                if (idx >= 0 && veloraLocalEvents[idx].registeredCount > 0) {
+                    veloraLocalEvents[idx].registeredCount--;
+                    saveLocalEvents();
+                }
+            }
+            toast('Registration cancelled.');
+            loadMyEvents();
+            loadBrowse();
+        }
+
+        // ── DASHBOARD ──
+        function filterDash(filter, btn) {
+            dashFilter = filter;
+            document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderDashTable(window._lastDashEvents || []);
+        }
+
+        async function loadDashboard() {
+            if (!staffUser) { showPage('home'); return; }
+            const kmcEvents = await api('GET', '/events/my-events');
+            const kArr = Array.isArray(kmcEvents) ? kmcEvents.map(e => ({ ...e, _publishedKmc: true })) : [];
+            const vArr = veloraLocalEvents.map(e => ({ ...e, _publishedKmc: false }));
+            const all = [...vArr, ...kArr];
+            window._lastDashEvents = all;
+
+            const sEl = document.getElementById('dashStats');
+            if (all.length) {
+                const tR = all.reduce((s, e) => s + (e.registeredCount || 0), 0);
+                const tC = all.reduce((s, e) => s + (e.capacity || 0), 0);
+                sEl.style.display = 'grid';
+                sEl.innerHTML = `
+              <div class="stat-card"><div class="stat-num">${all.length}</div><div class="stat-label">Total Events</div></div>
+              <div class="stat-card"><div class="stat-num">${kArr.length}</div><div class="stat-label">On KMC Platform</div></div>
+              <div class="stat-card"><div class="stat-num">${tR}</div><div class="stat-label">Total Registered</div></div>
+              <div class="stat-card"><div class="stat-num">${Math.round((tR / Math.max(tC, 1)) * 100)}%</div><div class="stat-label">Fill Rate</div></div>`;
+            } else {
+                sEl.style.display = 'none';
+            }
+            renderDashTable(all);
+        }
+
+        function renderDashTable(all) {
+            const c = document.getElementById('dashTable');
+            let events = all;
+            if (dashFilter === 'kmc') events = all.filter(e => e._publishedKmc);
+            if (dashFilter === 'velora') events = all.filter(e => !e._publishedKmc);
+            if (!events.length) {
+                c.innerHTML = '<div class="empty-state"><div class="empty-state-icon">◌</div><p>No events in this view.</p></div>';
+                return;
+            }
+            c.innerHTML = `<div class="table-wrapper"><table>
+          <thead><tr><th>Title</th><th>Type</th><th>Date</th><th>Location</th><th>Seats</th><th>Regs</th><th>KMC</th><th>Actions</th></tr></thead>
+          <tbody>${events.map(e => {
+                const kmcStatus = e._publishedKmc
+                    ? `<span class="kmc-on"><span class="kmc-on-dot"></span>Live</span>`
+                    : `<span class="kmc-off">Off</span>`;
+                const editBtn = `<button class="btn btn-sm btn-espresso" onclick="openEventForm('${e._publishedKmc ? 'kmc' : 'local'}',${e.id})">Edit</button>`;
+                const delBtn = `<button class="btn btn-sm btn-danger" onclick="deleteEvent('${e._publishedKmc ? 'kmc' : 'local'}',${e.id})">Delete</button>`;
+                const attendBtn = e._publishedKmc ? `<button class="btn btn-sm btn-sage" onclick="viewRegistrations(${e.id},'${e.title.replace(/'/g, "\\'")}')">Attendees</button>` : '';
+                const publishBtn = !e._publishedKmc ? `<button class="btn btn-sm btn-kmc" onclick="publishToKmc(${e.id})">→ KMC</button>` : '';
+                return `<tr>
+                <td><strong>${e.title}</strong></td>
+                <td><span class="event-type-badge">${e.type}</span></td>
+                <td style="color:var(--stone);font-size:0.8rem;">${new Date(e.eventDate).toLocaleDateString()}</td>
+                <td>${e.location}</td>
+                <td>${e.capacity}</td>
+                <td><span style="background:var(--clay-pale);color:var(--clay);font-weight:700;padding:0.2rem 0.65rem;font-size:0.78rem;">${e.registeredCount || 0}</span></td>
+                <td>${kmcStatus}</td>
+                <td class="td-actions">${editBtn}${attendBtn}${publishBtn}${delBtn}</td>
+              </tr>`;
+            }).join('')}</tbody>
+          </table></div>`;
+        }
+
+        async function publishToKmc(localId) {
+            const ev = veloraLocalEvents.find(e => e.id === localId);
+            if (!ev) { toast('Event not found.', true); return; }
+            const body = { title: ev.title, description: ev.description, location: ev.location, eventDate: ev.eventDate, type: ev.type, capacity: ev.capacity, imageUrl: ev.imageUrl || undefined };
+            const res = await api('POST', '/events', body);
+            if (res.id) {
+                veloraLocalEvents = veloraLocalEvents.filter(e => e.id !== localId);
+                saveLocalEvents();
+                toast('Event is now live on the KMC website.');
+                loadDashboard();
+            } else {
+                toast('Could not publish to KMC — ' + (res.message || 'please try again.'), true);
+            }
+        }
+
+        function openEventForm(source = null, id = null) {
+            document.getElementById('editEventId').value = (source && id) ? source + '_' + id : '';
+            document.getElementById('eventFormTitle').textContent = id ? 'Edit Event' : 'New Event';
+            document.getElementById('efPublishKmc').checked = false;
+            updateKmcToggleStyle();
+            clearImage(); switchImgTab('upload');
+            if (source && id) {
+                if (source === 'kmc') {
+                    api('GET', '/events/' + id, null, false).then(e => {
+                        document.getElementById('efTitle').value = e.title;
+                        document.getElementById('efDesc').value = e.description;
+                        document.getElementById('efLocation').value = e.location;
+                        document.getElementById('efDate').value = e.eventDate.slice(0, 16);
+                        document.getElementById('efType').value = e.type;
+                        document.getElementById('efCapacity').value = e.capacity;
+                        document.getElementById('efPublishKmc').checked = true;
+                        updateKmcToggleStyle();
+                        if (e.imageUrl) { document.getElementById('efImageFinal').value = e.imageUrl; document.getElementById('previewImg').src = e.imageUrl; document.getElementById('imagePreview').style.display = 'block'; }
+                    });
+                } else {
+                    const ev = veloraLocalEvents.find(e => e.id === parseInt(id));
+                    if (ev) {
+                        document.getElementById('efTitle').value = ev.title;
+                        document.getElementById('efDesc').value = ev.description;
+                        document.getElementById('efLocation').value = ev.location;
+                        document.getElementById('efDate').value = ev.eventDate.slice ? ev.eventDate.slice(0, 16) : ev.eventDate;
+                        document.getElementById('efType').value = ev.type;
+                        document.getElementById('efCapacity').value = ev.capacity;
+                        if (ev.imageUrl) { document.getElementById('efImageFinal').value = ev.imageUrl; document.getElementById('previewImg').src = ev.imageUrl; document.getElementById('imagePreview').style.display = 'block'; }
+                    }
+                }
+            } else {
+                ['efTitle', 'efDesc', 'efLocation', 'efDate', 'efCapacity'].forEach(fid => document.getElementById(fid).value = '');
+            }
+            openModal('eventFormModal');
+        }
+
+        function updateKmcToggleStyle() {
+            const checked = document.getElementById('efPublishKmc').checked;
+            document.getElementById('kmcToggleBox').classList.toggle('active', checked);
+            document.getElementById('kmcToggleNote').style.display = checked ? 'block' : 'none';
+        }
+
+        async function saveEvent() {
+            const rawId = document.getElementById('editEventId').value;
+            const publishKmc = document.getElementById('efPublishKmc').checked;
+            const body = {
+                title: document.getElementById('efTitle').value,
+                description: document.getElementById('efDesc').value,
+                location: document.getElementById('efLocation').value,
+                eventDate: document.getElementById('efDate').value,
+                type: document.getElementById('efType').value,
+                capacity: parseInt(document.getElementById('efCapacity').value, 10),
+                imageUrl: document.getElementById('efImageFinal').value || undefined
+            };
+            const missing = [];
+            if (!body.title) missing.push('Title');
+            if (!body.location) missing.push('Location');
+            if (!body.eventDate) missing.push('Date & Time');
+            if (!body.capacity || isNaN(body.capacity) || body.capacity < 1) missing.push('Capacity');
+            if (!body.description) missing.push('Description');
+            if (missing.length) { toast('Please fill in: ' + missing.join(', '), true); return; }
+
+            if (rawId) {
+                const [source, id] = rawId.split('_');
+                if (source === 'kmc') {
+                    const res = await api('PUT', '/events/' + id, body);
+                    if (res.id) { closeModal('eventFormModal'); toast('Event updated.'); loadDashboard(); }
+                    else toast('Could not update — ' + (res.message || 'try again.'), true);
+                } else {
+                    const idx = veloraLocalEvents.findIndex(e => e.id === parseInt(id));
+                    if (idx >= 0) {
+                        veloraLocalEvents[idx] = { ...veloraLocalEvents[idx], ...body };
+                        if (publishKmc) {
+                            const res = await api('POST', '/events', body);
+                            if (res.id) { veloraLocalEvents.splice(idx, 1); saveLocalEvents(); closeModal('eventFormModal'); toast('Event updated and now live on KMC.'); loadDashboard(); return; }
+                        }
+                        saveLocalEvents(); closeModal('eventFormModal'); toast('Event updated.'); loadDashboard();
+                    }
+                }
+            } else {
+                if (publishKmc) {
+                    const res = await api('POST', '/events', body);
+                    if (res.id) { closeModal('eventFormModal'); toast('Event created and published to Velora + KMC website.'); loadDashboard(); }
+                    else toast('Could not publish to KMC — ' + (res.message || 'check connection.'), true);
+                } else {
+                    localIdCounter++;
+                    const newEv = { ...body, id: localIdCounter, registeredCount: 0, organizerName: 'Velora Events', _publishedKmc: false };
+                    veloraLocalEvents.push(newEv);
+                    saveLocalEvents();
+                    closeModal('eventFormModal');
+                    toast('Event saved to Velora only. Use "→ KMC" to publish it city-wide later.');
+                    loadDashboard();
+                }
+            }
+        }
+
+        async function deleteEvent(source, id) {
+            if (source === 'kmc') {
+                if (!confirm('Remove this event from both Velora and the KMC platform?')) return;
+                const ok = await fetch(`${API}/events/${id}`, { method: 'DELETE', headers: { 'Authorization': 'Bearer ' + staffToken } });
+                if (ok.status === 204) { toast('Event removed from KMC.'); loadDashboard(); }
+                else toast('Could not delete this event.', true);
+            } else {
+                if (!confirm('Remove this Velora event?')) return;
+                veloraLocalEvents = veloraLocalEvents.filter(e => e.id !== parseInt(id));
+                saveLocalEvents();
+                toast('Event removed from Velora.');
+                loadDashboard();
+            }
+        }
+
+        async function viewRegistrations(eventId, eventTitle) {
+            const regs = await api('GET', '/registrations/event/' + eventId);
+            const overlay = document.createElement('div');
+            overlay.style.cssText = 'position:fixed;inset:0;background:rgba(28,16,8,0.8);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;';
+            const content = !Array.isArray(regs) || !regs.length
+                ? '<div class="empty-state"><div class="empty-state-icon">◌</div><p>No attendees registered yet.</p></div>'
+                : `<div class="table-wrapper"><table><thead><tr><th>#</th><th>Attendee</th><th>Registered</th></tr></thead><tbody>${regs.map((r, i) => `<tr>
+                <td style="color:var(--stone);font-size:0.78rem;">${String(i + 1).padStart(2, '0')}</td>
+                <td><strong>${r.userName}</strong></td>
+                <td style="color:var(--stone);font-size:0.8rem;">${new Date(r.registeredAt).toLocaleDateString('en-LK', { day: 'numeric', month: 'short', year: 'numeric' })}</td>
+              </tr>`).join('')}</tbody></table></div>`;
+            overlay.innerHTML = `<div style="background:var(--white);border-top:3px solid var(--clay);padding:2rem;width:100%;max-width:500px;max-height:85vh;overflow-y:auto;box-shadow:var(--shadow-lg);">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.75rem;padding-bottom:1.25rem;border-bottom:1px solid var(--parchment2);">
+              <div>
+                <h2 style="font-family:'Fraunces',serif;font-size:1.7rem;color:var(--espresso);font-weight:600;">Attendees</h2>
+                <p style="font-size:0.8rem;color:var(--stone);margin-top:0.2rem;">${eventTitle}</p>
+                <p style="font-size:0.78rem;color:var(--clay);font-weight:600;margin-top:0.3rem;">${Array.isArray(regs) ? regs.length : 0} registered</p>
+              </div>
+              <button onclick="this.closest('.regs-overlay').remove()" style="background:var(--parchment);border:1px solid var(--parchment3);width:32px;height:32px;cursor:pointer;color:var(--stone);font-size:0.9rem;">✕</button>
+            </div>${content}</div>`;
+            overlay.classList.add('regs-overlay');
+            overlay.addEventListener('click', ev => { if (ev.target === overlay) overlay.remove(); });
+            document.body.appendChild(overlay);
+        }
+
+        // ── IMAGE HELPERS ──
+        function switchImgTab(tab) {
+            const u = tab === 'upload';
+            document.getElementById('imgPanelUpload').style.display = u ? 'block' : 'none';
+            document.getElementById('imgPanelUrl').style.display = u ? 'none' : 'block';
+            document.getElementById('imgTabUpload').className = 'img-tab-btn' + (u ? ' active' : '');
+            document.getElementById('imgTabUrl').className = 'img-tab-btn' + (!u ? ' active' : '');
+        }
+        function handleImageFile(input) {
+            const f = input.files[0]; if (!f) return;
+            if (f.size > 5 * 1024 * 1024) { toast('Image must be under 5MB.', true); return; }
+            const r = new FileReader();
+            r.onload = e => {
+                const b = e.target.result;
+                document.getElementById('efImageFinal').value = b;
+                document.getElementById('previewImg').src = b;
+                document.getElementById('imagePreview').style.display = 'block';
+            };
+            r.readAsDataURL(f);
+        }
+        function previewImageFromUrl(url) {
+            if (!url) { clearImage(); return; }
+            document.getElementById('efImageFinal').value = url;
+            document.getElementById('previewImg').src = url;
+            document.getElementById('imagePreview').style.display = 'block';
+        }
+        function clearImage() {
+            ['efImageFinal', 'efImageFile'].forEach(id => document.getElementById(id).value = '');
+            const u = document.getElementById('efImageUrl'); if (u) u.value = '';
+            document.getElementById('previewImg').src = '';
+            document.getElementById('imagePreview').style.display = 'none';
+        }
+
+        // ── API ──
+        async function api(method, path, body = null, auth = true) {
+            const h = { 'Content-Type': 'application/json' };
+            if (auth && staffToken) h['Authorization'] = 'Bearer ' + staffToken;
+            try {
+                const r = await fetch(API + path, { method, headers: h, body: body ? JSON.stringify(body) : undefined });
+                if (r.status === 204) return {};
+                return await r.json();
+            } catch (e) {
+                return { message: 'Cannot connect to server.' };
+            }
+        }
+
+        // ── MODALS ──
+        function openModal(id) { document.getElementById(id).classList.add('open'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+        document.querySelectorAll('.modal-overlay').forEach(o => {
+            o.addEventListener('click', e => { if (e.target === o) o.classList.remove('open'); });
+        });
+
+        // ── TOAST ──
+        let toastTimer;
+        function toast(msg, isError = false) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.style.borderLeftColor = isError ? 'var(--red)' : 'var(--clay)';
+            t.style.display = 'block';
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => t.style.display = 'none', 4000);
+        }
+    </script>
+</body>
+</html>
